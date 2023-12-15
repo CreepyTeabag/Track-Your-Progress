@@ -69,6 +69,10 @@ body {
 .new-skill {
   grid-template-columns: 8rem 14rem;
 }
+
+.new-skill .add-skill {
+  grid-column: span 2;
+}
 .history {
   grid-template-columns: 1fr;
 }
