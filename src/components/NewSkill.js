@@ -11,13 +11,6 @@ export default function NewSkill({ types, onAddNew }) {
     history: [],
   });
 
-  // const [{ typeName, counterWord }] = types.filter(
-  //   (type) => type.typeName === newSkill.type
-  // );
-
-  // console.log(typeName);
-  // console.log(counterWord);
-
   return (
     <div className="table">
       <form className="new-skill" onSubmit={(e) => onAddNew(e)}>
@@ -36,7 +29,7 @@ export default function NewSkill({ types, onAddNew }) {
           className="input"
           value={newSkill.type}
           onChange={(e) => {
-            const [{ typeName, counterWord }] = types.filter(
+            const [{ counterWord }] = types.filter(
               (type) => type.typeName === e.target.value
             );
             setNewSkill({
