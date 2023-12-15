@@ -29,13 +29,14 @@ body {
 
 .App {
   display: grid;
-  /* grid-template-columns: 2fr 1fr; */
+  grid-template-columns: 48.75rem 26.5rem;
   column-gap: 3rem;
 }
 
 .table,
 .update,
-.history {
+.history,
+.new-skill {
   background-color: var(--color-light);
   border-radius: 0.5rem;
   overflow: hidden;
@@ -43,10 +44,12 @@ body {
 
 .table {
   width: fit-content;
+  height: fit-content;
 }
 
 .update,
-.history {
+.history,
+.new-skill {
   display: grid;
   grid-template-columns: 14rem 8rem;
   grid-column-start: 2;
@@ -58,10 +61,14 @@ body {
   width: 26.5rem;
 }
 
-.update h3 {
+.update h3,
+.new-skill h3 {
   grid-column: span 2;
 }
 
+.new-skill {
+  grid-template-columns: 8rem 14rem;
+}
 .history {
   grid-template-columns: 1fr;
 }
@@ -160,8 +167,25 @@ body {
   cursor: pointer;
 }
 
-.button:hover {
+.button-small:hover {
   background-color: var(--color-lightest);
+}
+
+.button-small:disabled {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 1);
+  cursor: unset;
+}
+
+.add-skill {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.add-skill .button-big {
+  padding: 0.8rem 1rem;
 }
 
 .progress {
@@ -171,13 +195,13 @@ body {
   margin-left: 0.5rem;
   border-radius: 100px;
   box-shadow: 0px 0px 3px 1px rgba(var(--accent-rgb), 0.2);
+  overflow: hidden;
 }
 
 .percentage {
   background-color: var(--accent);
   width: 25%;
   height: 100%;
-  border-radius: 100px;
 }
 
 .round {
