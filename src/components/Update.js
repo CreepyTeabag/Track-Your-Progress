@@ -13,7 +13,7 @@ export default function Update({ skill, onUpdate }) {
     >
       <h3>📈 Update progress on {skill.name}</h3>
 
-      <label>What page are you on?</label>
+      <label>What {skill.counterWord} are you on?</label>
       <input
         type="text"
         className="input"

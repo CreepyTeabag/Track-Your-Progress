@@ -6,18 +6,22 @@ export default function History({ skill, onShowHistory }) {
       {skill.history.length === 0 && <div>Nothing here yet...</div>}
 
       {skill.history.length > 0 &&
-        skill.history.map((day, i) => {
-          const date = new Date(day.date).toLocaleDateString();
-          return (
-            <div className="day" key={`${date}_${i}`}>
-              <div className="date">{date}</div>
-              <hr />
-              <div className="amount">
-                {skill.counterWord} #{day.progress}
+        skill.history
+          .slice(0)
+          .reverse()
+          .map((day, i) => {
+            const date = new Date(day.date).toLocaleDateString();
+
+            return (
+              <div className="day" key={`${date}_${i}`}>
+                <div className="date">{date}</div>
+                <hr />
+                <div className="amount">
+                  {skill.counterWord} #{day.progress}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
 
       <button
         className="button button-big"

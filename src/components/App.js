@@ -52,10 +52,13 @@ const initialTypes = [
 function App() {
   const [skills, setSkills] = useState(initialSkills);
   const [types, setTypes] = useState(initialTypes);
+
   const [showUpdate, setShowUpdate] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
+
   const [curSkill, setCurSkill] = useState(null);
+
   const [isDark, setIsDark] = useState(true);
 
   function handleShowUpdate(skill) {
@@ -96,7 +99,16 @@ function App() {
       );
       return;
     }
+
+    if (update > curSkill.size) {
+      alert(
+        `You can't set progress above its size (${curSkill.size} ${curSkill.counterWord}s)`
+      );
+      return;
+    }
+
     const date = new Date();
+
     setSkills(
       skills.map((skill) =>
         skill.name === curSkill.name
@@ -108,6 +120,7 @@ function App() {
           : skill
       )
     );
+
     setCurSkill(null);
     setShowUpdate(false);
     setShowHistory(false);
@@ -127,11 +140,13 @@ function App() {
           handleShowHistory={handleShowHistory}
           handleShowAdd={handleShowAdd}
         />
+
         {showUpdate && <Update skill={curSkill} onUpdate={handleUpdate} />}
         {showHistory && (
           <History skill={curSkill} onShowHistory={handleShowHistory} />
         )}
         {showAdd && <NewSkill types={types} onAddNew={handleAddNew} />}
+
         <ThemeButton isDark={isDark} setIsDark={setIsDark}></ThemeButton>
       </div>
     </div>

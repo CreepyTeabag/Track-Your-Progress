@@ -1,6 +1,5 @@
 export default function Skill({ skill, onShowUpdate, onShowHistory }) {
   let percentage = (skill.currentProgress / skill.size) * 100;
-  if (percentage > 100) percentage = 100;
   if (percentage > 0 && percentage < 1) percentage = 1;
   else percentage = Math.round(percentage);
   return (
@@ -21,8 +20,12 @@ export default function Skill({ skill, onShowUpdate, onShowHistory }) {
       </li>
       <li>{skill.name}</li>
       <li>{skill.type}</li>
-      <li>{skill.currentProgress}</li>
-      <li>{skill.size}</li>
+      <li>
+        {skill.counterWord} #{skill.currentProgress}
+      </li>
+      <li>
+        {skill.size} {skill.counterWord}s
+      </li>
       <li>
         {percentage === 100 && "Finished 🎉"}
         {percentage === 0 && "Not started yet"}

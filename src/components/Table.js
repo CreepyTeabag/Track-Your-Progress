@@ -13,7 +13,7 @@ export default function Table({
         <p> </p>
         <p>Name</p>
         <p>Type</p>
-        <p>Current Progress</p>
+        <p>Currently on</p>
         <p>Size</p>
         <p>Progress Bar</p>
         <p> </p>
