@@ -1,3 +1,4 @@
+/*---------------GENERAL SETTINGS---------------*/
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +15,12 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.round {
+  border-radius: 100px;
+}
+
+/*------------------DARK THEME------------------*/
 
 .dark.App {
   --white: #d4dcf1;
@@ -36,6 +43,8 @@ body {
 .dark .progress {
   box-shadow: 0px 0px 3px 1px rgba(var(--white-rgb), 0.4);
 }
+
+/*------------CONTAINERS & VARIABLES------------*/
 
 .App {
   display: flex;
@@ -61,10 +70,11 @@ body {
   column-gap: 3rem;
 }
 
+/*------------------BIG BLOCKS------------------*/
+
 .table,
-.update,
-.history,
-.new-skill {
+.form,
+.history {
   background-color: var(--color-light);
   border-radius: 0.5rem;
   overflow: hidden;
@@ -75,9 +85,8 @@ body {
   height: fit-content;
 }
 
-.update,
-.history,
-.new-skill {
+.form,
+.history {
   display: grid;
   grid-template-columns: 14rem 8rem;
   grid-column-start: 2;
@@ -89,11 +98,13 @@ body {
   width: 26.5rem;
 }
 
-.update h3,
-.new-skill h3 {
+.form h3 {
   grid-column: span 2;
 }
 
+.history {
+  grid-template-columns: 1fr;
+}
 .new-skill {
   grid-template-columns: 8rem 14rem;
 }
@@ -101,9 +112,8 @@ body {
 .new-skill .add-skill {
   grid-column: span 2;
 }
-.history {
-  grid-template-columns: 1fr;
-}
+
+/*---------------HISTORY ELEMENTS---------------*/
 
 .day {
   position: relative;
@@ -137,19 +147,7 @@ body {
   padding-left: 0.2rem;
 }
 
-.button-big {
-  width: fit-content;
-  padding: 0.5rem 1.2rem;
-
-  font-size: 1rem;
-
-  border: none;
-  border-radius: 0.5rem;
-  background-color: var(--color-dark);
-  transition: 0.3s;
-  cursor: pointer;
-}
-
+/*-----------------FORM ELEMENTS----------------*/
 .input {
   height: 2rem;
   padding: 0.2rem 0.6rem;
@@ -159,6 +157,7 @@ body {
   border-radius: 0.5rem;
 }
 
+/*--------------MAIN TABLE ELEMENTS-------------*/
 .header,
 .line {
   display: grid;
@@ -175,6 +174,11 @@ body {
   align-items: flex-start;
 }
 
+.header {
+  font-weight: 600;
+  background-color: var(--color-dark);
+}
+
 .line > * {
   align-items: center;
   text-align: center;
@@ -182,42 +186,6 @@ body {
 
 .line:hover {
   background-color: var(--color-medium);
-}
-
-.header {
-  font-weight: 600;
-  background-color: var(--color-dark);
-}
-
-.button-small {
-  font-size: 1.2rem;
-  padding: 0.3rem;
-  border: none;
-  border-radius: 100px;
-  background-color: transparent;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.button-small:hover {
-  background-color: var(--color-lightest);
-}
-
-.button-small:disabled {
-  background-color: transparent;
-  color: rgba(0, 0, 0, 1);
-  cursor: unset;
-}
-
-.add-skill {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 1rem;
-}
-
-.add-skill .button-big {
-  padding: 0.8rem 1rem;
 }
 
 .progress {
@@ -236,8 +204,48 @@ body {
   height: 100%;
 }
 
-.round {
-  border-radius: 100px;
+.add-skill {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.add-skill .button-big {
+  padding: 0.8rem 1rem;
+}
+
+/*------------BUTTONS------------*/
+.button {
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button-small {
+  font-size: 1.2rem;
+  padding: 0.3rem;
+  background-color: transparent;
+}
+
+.button-small:hover {
+  background-color: var(--color-lightest);
+}
+
+.button-small:disabled {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 1);
+  cursor: unset;
+}
+
+.button-big {
+  width: fit-content;
+  padding: 0.5rem 1.2rem;
+
+  font-size: 1rem;
+
+  border-radius: 0.5rem;
+  background-color: var(--color-dark);
 }
 
 .button-theme {
@@ -250,7 +258,5 @@ body {
 
   font-size: 3rem;
 
-  border: none;
   background-color: transparent;
-  cursor: pointer;
 }

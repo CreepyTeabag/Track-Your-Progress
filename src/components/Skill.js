@@ -7,11 +7,14 @@ export default function Skill({ skill, onShowUpdate, onShowHistory }) {
     <ul className="line">
       <li>
         {percentage < 100 ? (
-          <button className="button-small" onClick={() => onShowUpdate(skill)}>
+          <button
+            className="button button-small round"
+            onClick={() => onShowUpdate(skill)}
+          >
             📈
           </button>
         ) : (
-          <button className="button-small" disabled>
+          <button className="button button-small round" disabled>
             ✅
           </button>
         )}
@@ -36,7 +39,10 @@ export default function Skill({ skill, onShowUpdate, onShowHistory }) {
         )}
       </li>
       <li>
-        <button className="button-small" onClick={() => onShowHistory(skill)}>
+        <button
+          className="button button-small round"
+          onClick={() => onShowHistory(skill)}
+        >
           📃
         </button>
       </li>

@@ -14,7 +14,7 @@ export default function NewSkill({ types, onAddNew }) {
   return (
     <div className="table">
       <form
-        className="new-skill"
+        className="form new-skill"
         onSubmit={(e) => {
           e.preventDefault();
           if (!newSkill.name || !newSkill.size) {

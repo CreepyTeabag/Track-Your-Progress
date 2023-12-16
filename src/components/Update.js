@@ -5,7 +5,7 @@ export default function Update({ skill, onUpdate }) {
 
   return (
     <form
-      className="update"
+      className="form"
       onSubmit={(e) => {
         e.preventDefault();
         onUpdate(Number(curProgress));
@@ -21,7 +21,7 @@ export default function Update({ skill, onUpdate }) {
         onChange={(e) => setCurProgress(e.target.value)}
       />
 
-      <button className="button-big">Update</button>
+      <button className="button button-big">Update</button>
     </form>
   );
 }

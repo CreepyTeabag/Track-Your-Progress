@@ -19,7 +19,10 @@ export default function History({ skill, onShowHistory }) {
           );
         })}
 
-      <button className="button-big" onClick={() => onShowHistory(skill)}>
+      <button
+        className="button button-big"
+        onClick={() => onShowHistory(skill)}
+      >
         Close
       </button>
     </div>
