@@ -3,6 +3,7 @@ import NewSkill from "./NewSkill";
 import Table from "./Table";
 import Update from "./Update";
 import History from "./History";
+import ThemeButton from "./ThemeButton";
 
 const initialSkills = [
   {
@@ -55,6 +56,7 @@ function App() {
   const [showHistory, setShowHistory] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [curSkill, setCurSkill] = useState(null);
+  const [isDark, setIsDark] = useState(true);
 
   function handleShowUpdate(skill) {
     setShowHistory(false);
@@ -117,18 +119,21 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Table
-        skills={skills}
-        handleShowUpdate={handleShowUpdate}
-        handleShowHistory={handleShowHistory}
-        handleShowAdd={handleShowAdd}
-      />
-      {showUpdate && <Update skill={curSkill} onUpdate={handleUpdate} />}
-      {showHistory && (
-        <History skill={curSkill} onShowHistory={handleShowHistory} />
-      )}
-      {showAdd && <NewSkill types={types} onAddNew={handleAddNew} />}
+    <div className={`App${isDark ? " dark" : ""}`}>
+      <div className="container">
+        <Table
+          skills={skills}
+          handleShowUpdate={handleShowUpdate}
+          handleShowHistory={handleShowHistory}
+          handleShowAdd={handleShowAdd}
+        />
+        {showUpdate && <Update skill={curSkill} onUpdate={handleUpdate} />}
+        {showHistory && (
+          <History skill={curSkill} onShowHistory={handleShowHistory} />
+        )}
+        {showAdd && <NewSkill types={types} onAddNew={handleAddNew} />}
+        <ThemeButton isDark={isDark} setIsDark={setIsDark}></ThemeButton>
+      </div>
     </div>
   );
 }
