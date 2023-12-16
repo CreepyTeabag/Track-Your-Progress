@@ -111,9 +111,9 @@ function App() {
     setShowHistory(false);
   }
 
-  function handleAddNew(e) {
-    e.preventDefault();
-    console.log("new");
+  function handleAddNew(newSkill) {
+    setSkills((skills) => [...skills, newSkill]);
+    setShowAdd(false);
   }
 
   return (

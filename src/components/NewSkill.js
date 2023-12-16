@@ -5,7 +5,7 @@ export default function NewSkill({ types, onAddNew }) {
   const [newSkill, setNewSkill] = useState({
     name: "",
     type: "book 📔",
-    counterWord: "",
+    counterWord: "page",
     currentProgress: 0,
     size: 0,
     history: [],
@@ -13,7 +13,17 @@ export default function NewSkill({ types, onAddNew }) {
 
   return (
     <div className="table">
-      <form className="new-skill" onSubmit={(e) => onAddNew(e)}>
+      <form
+        className="new-skill"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!newSkill.name || !newSkill.size) {
+            return;
+          }
+
+          onAddNew(newSkill);
+        }}
+      >
         <h3>➕ Add</h3>
 
         <label>Name:</label>
@@ -47,7 +57,14 @@ export default function NewSkill({ types, onAddNew }) {
         <label>
           Size{newSkill.counterWord && <> (in {newSkill.counterWord}s)</>}:
         </label>
-        <input type="text" className="input" />
+        <input
+          type="text"
+          className="input"
+          value={newSkill.size}
+          onChange={(e) =>
+            setNewSkill({ ...newSkill, size: Number(e.target.value) })
+          }
+        />
         <AddButton>Add to the list</AddButton>
       </form>
     </div>
