@@ -1,4 +1,9 @@
-export default function Skill({ skill, onShowUpdate, onShowHistory }) {
+export default function Skill({
+  skill,
+  onShowUpdate,
+  onShowHistory,
+  onShowEdit,
+}) {
   let percentage = (skill.currentProgress / skill.size) * 100;
   if (percentage > 0 && percentage < 1) percentage = 1;
   else percentage = Math.round(percentage);
@@ -41,6 +46,14 @@ export default function Skill({ skill, onShowUpdate, onShowHistory }) {
             </div>
           </>
         )}
+      </li>
+      <li>
+        <button
+          className="button button-small round"
+          onClick={() => onShowEdit(skill)}
+        >
+          ✏️
+        </button>
       </li>
       <li>
         <button

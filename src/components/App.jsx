@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NewSkill from "./NewSkill";
+import EditSkill from "./EditSkill";
 import Table from "./Table";
 import Update from "./Update";
 import History from "./History";
@@ -51,11 +52,11 @@ const initialTypes = [
 
 function App() {
   const [skills, setSkills] = useState(initialSkills);
-  const [types, setTypes] = useState(initialTypes);
 
   const [showUpdate, setShowUpdate] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
+  const [showEdit, setShowEdit] = useState(true);
 
   const [curSkill, setCurSkill] = useState(null);
 
@@ -90,6 +91,13 @@ function App() {
     setShowHistory(false);
     setCurSkill(null);
     setShowAdd((open) => !open);
+  }
+
+  function handleShowEdit(skill) {
+    setShowUpdate(false);
+    setShowHistory(false);
+    setCurSkill(skill);
+    setShowEdit((open) => !open);
   }
 
   function handleUpdate(update) {
@@ -139,13 +147,16 @@ function App() {
           handleShowUpdate={handleShowUpdate}
           handleShowHistory={handleShowHistory}
           handleShowAdd={handleShowAdd}
+          handleShowEdit={handleShowEdit}
         />
 
         {showUpdate && <Update skill={curSkill} onUpdate={handleUpdate} />}
         {showHistory && (
           <History skill={curSkill} onShowHistory={handleShowHistory} />
         )}
-        {showAdd && <NewSkill types={types} onAddNew={handleAddNew} />}
+        {showAdd && <NewSkill types={initialTypes} onAddNew={handleAddNew} />}
+
+        {showEdit && <EditSkill types={initialTypes} onAddNew={handleAddNew} />}
 
         <ThemeButton isDark={isDark} setIsDark={setIsDark}></ThemeButton>
       </div>

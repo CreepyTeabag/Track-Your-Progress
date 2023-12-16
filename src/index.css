@@ -67,7 +67,7 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 57rem 26.5rem;
+  grid-template-columns: 60.5rem 26.5rem;
   column-gap: 3rem;
 }
 
@@ -162,7 +162,7 @@ body {
 .header,
 .line {
   display: grid;
-  grid-template-columns: 2rem 10rem 6rem 7rem 7rem 12rem 2rem;
+  grid-template-columns: 2rem 10rem 6rem 7rem 7rem 12rem 2rem 2rem;
   column-gap: 1.5rem;
   padding: 1rem;
   transition: 0.3s;

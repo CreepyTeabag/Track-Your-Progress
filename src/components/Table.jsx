@@ -6,6 +6,7 @@ export default function Table({
   handleShowUpdate,
   handleShowHistory,
   handleShowAdd,
+  handleShowEdit,
 }) {
   return (
     <div className="table">
@@ -17,6 +18,7 @@ export default function Table({
         <p>Size</p>
         <p>Progress Bar</p>
         <p> </p>
+        <p> </p>
       </div>
       {skills.map((skill) => (
         <Skill
@@ -24,6 +26,7 @@ export default function Table({
           skill={skill}
           onShowUpdate={handleShowUpdate}
           onShowHistory={handleShowHistory}
+          onShowEdit={handleShowEdit}
         />
       ))}
       <AddButton onShowAdd={handleShowAdd}>➕</AddButton>
