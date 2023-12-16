@@ -59,7 +59,7 @@ function App() {
 
   const [curSkill, setCurSkill] = useState(null);
 
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   function handleShowUpdate(skill) {
     setShowHistory(false);
