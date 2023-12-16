@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 export default function Update({ skill, onUpdate }) {
-  const [curProgress, setCurProgress] = useState("");
+  const [currentProgress, setCurrentProgress] = useState("");
 
   return (
     <form
       className="form"
       onSubmit={(e) => {
         e.preventDefault();
-        onUpdate(Number(curProgress));
+        onUpdate(Number(currentProgress));
       }}
     >
       <h3>📈 Update progress on {skill.name}</h3>
@@ -17,8 +17,8 @@ export default function Update({ skill, onUpdate }) {
       <input
         type="text"
         className="input"
-        value={curProgress}
-        onChange={(e) => setCurProgress(e.target.value)}
+        value={currentProgress}
+        onChange={(e) => setCurrentProgress(e.target.value)}
       />
 
       <button className="button button-big">Update</button>

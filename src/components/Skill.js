@@ -2,6 +2,7 @@ export default function Skill({ skill, onShowUpdate, onShowHistory }) {
   let percentage = (skill.currentProgress / skill.size) * 100;
   if (percentage > 0 && percentage < 1) percentage = 1;
   else percentage = Math.round(percentage);
+
   return (
     <ul className="line">
       <li>

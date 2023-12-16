@@ -109,8 +109,8 @@ function App() {
 
     const date = new Date();
 
-    setSkills(
-      skills.map((skill) =>
+    setSkills((prev) =>
+      prev.map((skill) =>
         skill.name === curSkill.name
           ? {
               ...skill,
