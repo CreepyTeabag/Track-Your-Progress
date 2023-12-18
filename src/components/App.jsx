@@ -8,6 +8,7 @@ import ThemeButton from "./ThemeButton";
 
 const initialSkills = [
   {
+    id: 1702546292,
     name: "JS course",
     type: "course 🧐",
     counterWord: "lecture",
@@ -16,6 +17,7 @@ const initialSkills = [
     history: [{ date: "2023-12-14T16:31:09.477Z", progress: 10 }],
   },
   {
+    id: 1665725492,
     name: "HTML + CSS course",
     type: "course 🧐",
     counterWord: "lecture",
@@ -27,6 +29,7 @@ const initialSkills = [
     ],
   },
   {
+    id: 1702703466,
     name: "Typescript",
     type: "book 📔",
     counterWord: "page",
@@ -35,6 +38,7 @@ const initialSkills = [
     history: [],
   },
   {
+    id: 1692467275,
     name: "Touch typing. English",
     type: "skill 💪",
     counterWord: "level",
@@ -56,15 +60,18 @@ function App() {
   const [showUpdate, setShowUpdate] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
-  const [showEdit, setShowEdit] = useState(true);
+  const [showEdit, setShowEdit] = useState(false);
 
   const [curSkill, setCurSkill] = useState(null);
 
   const [isDark, setIsDark] = useState(false);
 
+  const [editedSkill, setEditedSkill] = useState(curSkill);
+
   function handleShowUpdate(skill) {
     setShowHistory(false);
     setShowAdd(false);
+    setShowEdit(false);
 
     if (curSkill === null || curSkill.name !== skill.name) {
       setCurSkill(skill);
@@ -77,6 +84,7 @@ function App() {
   function handleShowHistory(skill) {
     setShowUpdate(false);
     setShowAdd(false);
+    setShowEdit(false);
 
     if (curSkill === null || curSkill.name !== skill.name) {
       setCurSkill(skill);
@@ -89,6 +97,7 @@ function App() {
   function handleShowAdd() {
     setShowUpdate(false);
     setShowHistory(false);
+    setShowEdit(false);
     setCurSkill(null);
     setShowAdd((open) => !open);
   }
@@ -96,8 +105,14 @@ function App() {
   function handleShowEdit(skill) {
     setShowUpdate(false);
     setShowHistory(false);
-    setCurSkill(skill);
-    setShowEdit((open) => !open);
+
+    if (curSkill === null || curSkill.name !== skill.name) {
+      setCurSkill(skill);
+      setEditedSkill(skill);
+      setShowEdit(true);
+    } else {
+      setShowEdit((open) => !open);
+    }
   }
 
   function handleUpdate(update) {
@@ -139,6 +154,17 @@ function App() {
     setShowAdd(false);
   }
 
+  function handleEditSkill(editedSkill) {
+    setSkills((prevSkills) =>
+      prevSkills.map((prevSkill) =>
+        prevSkill.id === editedSkill.id
+          ? { ...prevSkill, ...editedSkill }
+          : prevSkill
+      )
+    );
+    setShowEdit(false);
+  }
+
   return (
     <div className={`App${isDark ? " dark" : ""}`}>
       <div className="container">
@@ -156,7 +182,15 @@ function App() {
         )}
         {showAdd && <NewSkill types={initialTypes} onAddNew={handleAddNew} />}
 
-        {showEdit && <EditSkill types={initialTypes} onAddNew={handleAddNew} />}
+        {showEdit && (
+          <EditSkill
+            types={initialTypes}
+            skill={curSkill}
+            editedSkill={editedSkill}
+            setEditedSkill={setEditedSkill}
+            onEditSkill={handleEditSkill}
+          />
+        )}
 
         <ThemeButton isDark={isDark} setIsDark={setIsDark}></ThemeButton>
       </div>

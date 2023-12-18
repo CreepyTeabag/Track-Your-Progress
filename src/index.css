@@ -106,12 +106,18 @@ body {
 .history {
   grid-template-columns: 1fr;
 }
+
 .new-skill {
   grid-template-columns: 8rem 14rem;
 }
 
 .new-skill .add-skill {
   grid-column: span 2;
+}
+
+.new-skill span {
+  font-size: 12px;
+  color: grey;
 }
 
 /*---------------HISTORY ELEMENTS---------------*/

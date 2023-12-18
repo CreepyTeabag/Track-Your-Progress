@@ -3,6 +3,7 @@ import AddButton from "./AddButton";
 
 export default function NewSkill({ types, onAddNew }) {
   const [newSkill, setNewSkill] = useState({
+    id: new Date().valueOf(),
     name: "",
     type: "book 📔",
     counterWord: "page",
