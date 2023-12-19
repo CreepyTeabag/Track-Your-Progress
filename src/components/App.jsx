@@ -105,10 +105,11 @@ function App() {
   function handleShowEdit(skill) {
     setShowUpdate(false);
     setShowHistory(false);
+    setShowAdd(false);
+    setEditedSkill(skill);
 
     if (curSkill === null || curSkill.name !== skill.name) {
       setCurSkill(skill);
-      setEditedSkill(skill);
       setShowEdit(true);
     } else {
       setShowEdit((open) => !open);

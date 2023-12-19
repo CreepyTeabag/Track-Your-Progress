@@ -23,25 +23,26 @@ body {
 /*------------------DARK THEME------------------*/
 
 .dark.App {
-  --white: #d4dcf1;
-  --white-rgb: 212, 220, 241;
-  --color-lightest: #6d80cd;
-  --color-light: #2c30bb;
-  --color-medium: #170f8a;
-  --color-dark: #160e85;
-  --accent: #0c0765;
-  --accent-rgb: 12, 7, 101;
+  --white: #ced9f0;
+  --white-rgb: 231, 221, 210;
+  --color-lightest: #587abd;
+  --color-light: #213969;
+  --color-medium: #0b1b3a;
+  --color-dark: #001b51;
+  --color-dark-rgb: 28, 25, 24;
+  --accent: #020114;
+  --accent-rgb: 104, 57, 26;
 
-  color: #dedcff;
-  background-color: #000424;
+  color: #e1e2e2;
+  background-color: #010714;
 }
 
 .dark .button-big {
-  color: #dedcff;
+  color: #e1e2e2;
 }
 
 .dark .progress {
-  box-shadow: 0px 0px 3px 1px rgba(var(--white-rgb), 0.4);
+  box-shadow: 0px 0px 3px 1px rgba(var(--color-dark-rgb), 0.4);
 }
 
 /*------------CONTAINERS & VARIABLES------------*/
@@ -53,7 +54,7 @@ body {
   width: 100vw;
   height: 100vh;
   color: #495057;
-  background-color: #fff;
+  background-color: #fffdf7;
   overflow: visible;
 
   --white: #fffbf2;
