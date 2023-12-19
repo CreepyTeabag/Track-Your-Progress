@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddButton from "./AddButton";
+import ClosePopup from "./ClosePopup";
 
 export default function NewSkill({ types, onAddNew }) {
   const [newSkill, setNewSkill] = useState({
@@ -13,61 +14,65 @@ export default function NewSkill({ types, onAddNew }) {
   });
 
   return (
-    <div className="table">
-      <form
-        className="form new-skill"
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (!newSkill.name || !newSkill.size) {
-            return;
-          }
+    <>
+      <div className="block popup">
+        <ClosePopup></ClosePopup>
+        <form
+          className="form new-skill"
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (!newSkill.name || !newSkill.size) {
+              return;
+            }
 
-          onAddNew(newSkill);
-        }}
-      >
-        <h3>➕ Add</h3>
-
-        <label>Name:</label>
-        <input
-          type="text"
-          className="input"
-          value={newSkill.name}
-          onChange={(e) => setNewSkill({ ...newSkill, name: e.target.value })}
-        />
-
-        <label>Type:</label>
-        <select
-          className="input"
-          value={newSkill.type}
-          onChange={(e) => {
-            const [{ counterWord }] = types.filter(
-              (type) => type.typeName === e.target.value
-            );
-            setNewSkill({
-              ...newSkill,
-              type: e.target.value,
-              counterWord: counterWord,
-            });
+            onAddNew(newSkill);
           }}
         >
-          {types.map((type) => (
-            <option key={type.typeName}>{type.typeName}</option>
-          ))}
-        </select>
+          <h3>➕ Add</h3>
 
-        <label>
-          Size{newSkill.counterWord && <> (in {newSkill.counterWord}s)</>}:
-        </label>
-        <input
-          type="text"
-          className="input"
-          value={newSkill.size}
-          onChange={(e) =>
-            setNewSkill({ ...newSkill, size: Number(e.target.value) })
-          }
-        />
-        <AddButton>Add to the list</AddButton>
-      </form>
-    </div>
+          <label>Name:</label>
+          <input
+            type="text"
+            className="input"
+            value={newSkill.name}
+            onChange={(e) => setNewSkill({ ...newSkill, name: e.target.value })}
+          />
+
+          <label>Type:</label>
+          <select
+            className="input"
+            value={newSkill.type}
+            onChange={(e) => {
+              const [{ counterWord }] = types.filter(
+                (type) => type.typeName === e.target.value
+              );
+              setNewSkill({
+                ...newSkill,
+                type: e.target.value,
+                counterWord: counterWord,
+              });
+            }}
+          >
+            {types.map((type) => (
+              <option key={type.typeName}>{type.typeName}</option>
+            ))}
+          </select>
+
+          <label>
+            Size{newSkill.counterWord && <> (in {newSkill.counterWord}s)</>}:
+          </label>
+          <input
+            type="text"
+            className="input"
+            value={newSkill.size}
+            onChange={(e) =>
+              setNewSkill({ ...newSkill, size: Number(e.target.value) })
+            }
+          />
+          <AddButton>Add to the list</AddButton>
+        </form>
+      </div>
+      <div className="popup-blocker"></div>
+    </>
   );
 }

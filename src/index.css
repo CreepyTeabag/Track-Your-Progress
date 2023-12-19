@@ -11,13 +11,30 @@ html {
 }
 
 body {
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
+  overflow-x: clip;
 }
 
 .round {
   border-radius: 100px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: var(--color-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark);
+  border-radius: 10px;
 }
 
 /*------------------DARK THEME------------------*/
@@ -56,17 +73,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+
   color: #495057;
   background-color: #fffdf7;
-  overflow: visible;
+  overflow-y: visible;
 
   --white: #fffbf2;
   --color-lightest: #fff3da;
   --color-light: #faebcc;
   --color-medium: #ffdb8e;
   --color-dark: #f0bb49;
+  --color-dark-rgb: 240, 187, 73;
   --accent: #ff5a1f;
   --accent-rgb: 255, 90, 31;
   --red: #d42317;
@@ -80,7 +101,7 @@ body {
 
 /*------------------BIG BLOCKS------------------*/
 
-.table,
+.block,
 .form,
 .history {
   background-color: var(--color-light);
@@ -88,7 +109,7 @@ body {
   overflow: hidden;
 }
 
-.table {
+.block {
   width: fit-content;
   height: fit-content;
 }
@@ -195,6 +216,11 @@ body {
   background-color: var(--color-dark);
 }
 
+.skills-list {
+  max-height: 35rem;
+  overflow-y: scroll;
+}
+
 .line > * {
   align-items: center;
 }
@@ -226,6 +252,10 @@ body {
   padding: 1rem;
 }
 
+.skills-list + .add-skill {
+  box-shadow: 0px 0px 10px 6px rgba(var(--color-dark-rgb), 0.2);
+}
+
 .add-skill .button-big,
 .edit-skill .button-big {
   padding: 0.8rem 1rem;
@@ -248,7 +278,7 @@ body {
   opacity: 1;
 }
 
-/*------------BUTTONS------------*/
+/*--------------------BUTTONS-------------------*/
 .button {
   border: none;
   cursor: pointer;
@@ -282,9 +312,9 @@ body {
 }
 
 .button-theme {
-  position: absolute;
-  bottom: 4vh;
-  left: 3vw;
+  position: fixed;
+  bottom: 3vh;
+  left: 1vw;
 
   width: 3rem;
   aspect-ratio: 1;
@@ -292,4 +322,51 @@ body {
   font-size: 3rem;
 
   background-color: transparent;
+}
+
+.button-close {
+  position: absolute;
+  top: 0;
+  right: 0.6rem;
+  font-size: 2rem;
+}
+
+/*-------------------RESPONSIVE-----------------*/
+@media (max-width: 1620px) {
+  .container {
+    position: relative;
+    grid-template-columns: 60.5rem;
+    column-gap: 0;
+  }
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .popup-blocker {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+  }
+
+  .form,
+  .history {
+    padding: 2rem;
+    row-gap: 1.5rem;
+  }
+
+  .new-skill {
+    padding-bottom: 0.5rem;
+  }
+
+  .edit-skill {
+    padding: 2rem 0 0.5rem 0;
+  }
 }

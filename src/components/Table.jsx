@@ -9,7 +9,7 @@ export default function Table({
   handleShowEdit,
 }) {
   return (
-    <div className="table">
+    <div className="block">
       <div className="header">
         <p> </p>
         <p>Name</p>
@@ -20,15 +20,17 @@ export default function Table({
         <p> </p>
         <p> </p>
       </div>
-      {skills.map((skill) => (
-        <Skill
-          key={skill.name}
-          skill={skill}
-          onShowUpdate={handleShowUpdate}
-          onShowHistory={handleShowHistory}
-          onShowEdit={handleShowEdit}
-        />
-      ))}
+      <div className="skills-list">
+        {skills.map((skill) => (
+          <Skill
+            key={skill.name}
+            skill={skill}
+            onShowUpdate={handleShowUpdate}
+            onShowHistory={handleShowHistory}
+            onShowEdit={handleShowEdit}
+          />
+        ))}
+      </div>
       <AddButton onShowAdd={handleShowAdd}>➕</AddButton>
     </div>
   );
