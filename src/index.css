@@ -32,12 +32,17 @@ body {
   --color-dark-rgb: 28, 25, 24;
   --accent: #020114;
   --accent-rgb: 104, 57, 26;
+  --red: #51000e;
 
   color: #e1e2e2;
   background-color: #010714;
 }
 
 .dark .button-big {
+  color: #e1e2e2;
+}
+
+.dark.button-big.danger:hover {
   color: #e1e2e2;
 }
 
@@ -64,6 +69,7 @@ body {
   --color-dark: #f0bb49;
   --accent: #ff5a1f;
   --accent-rgb: 255, 90, 31;
+  --red: #d42317;
 }
 
 .container {
@@ -112,7 +118,8 @@ body {
   grid-template-columns: 8rem 14rem;
 }
 
-.new-skill .add-skill {
+.new-skill .add-skill,
+.new-skill .edit-skill {
   grid-column: span 2;
 }
 
@@ -219,8 +226,26 @@ body {
   padding: 1rem;
 }
 
-.add-skill .button-big {
+.add-skill .button-big,
+.edit-skill .button-big {
   padding: 0.8rem 1rem;
+}
+
+.edit-skill {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.button-big.danger {
+  opacity: 0.3;
+}
+
+.button-big.danger:hover {
+  color: var(--white);
+  background-color: var(--red);
+  opacity: 1;
 }
 
 /*------------BUTTONS------------*/

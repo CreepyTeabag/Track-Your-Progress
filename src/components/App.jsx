@@ -166,6 +166,19 @@ function App() {
     setShowEdit(false);
   }
 
+  function handleDeleteSkill(deletedSkill) {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${deletedSkill.name}"? This action is irreversible!`
+    );
+    if (!confirmed) return;
+
+    setSkills((prevSkills) =>
+      prevSkills.filter((skill) => skill.id !== deletedSkill.id)
+    );
+    setShowEdit(false);
+    setCurSkill(null);
+  }
+
   return (
     <div className={`App${isDark ? " dark" : ""}`}>
       <div className="container">
@@ -190,6 +203,7 @@ function App() {
             editedSkill={editedSkill}
             setEditedSkill={setEditedSkill}
             onEditSkill={handleEditSkill}
+            onDeleteSkill={handleDeleteSkill}
           />
         )}
 

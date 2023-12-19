@@ -1,5 +1,4 @@
-import { useState } from "react";
-import AddButton from "./AddButton";
+import EditButton from "./EditButton";
 
 export default function EditSkill({
   types,
@@ -7,6 +6,7 @@ export default function EditSkill({
   editedSkill,
   setEditedSkill,
   onEditSkill,
+  onDeleteSkill,
 }) {
   return (
     <div className="table">
@@ -63,7 +63,9 @@ export default function EditSkill({
             setEditedSkill({ ...editedSkill, size: Number(e.target.value) });
           }}
         />
-        <AddButton>Apply changes</AddButton>
+        <EditButton skill={skill} onDeleteSkill={onDeleteSkill}>
+          Apply changes
+        </EditButton>
       </form>
     </div>
   );
