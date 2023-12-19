@@ -1,8 +1,8 @@
 import { useState } from "react";
 import AddButton from "./AddButton";
-import ClosePopup from "./ClosePopup";
+import CloseButton from "./CloseButton";
 
-export default function NewSkill({ types, onAddNew }) {
+export default function NewSkill({ types, onAddSkill, onShowAdd }) {
   const [newSkill, setNewSkill] = useState({
     id: new Date().valueOf(),
     name: "",
@@ -16,7 +16,7 @@ export default function NewSkill({ types, onAddNew }) {
   return (
     <>
       <div className="block popup">
-        <ClosePopup></ClosePopup>
+        <CloseButton onClose={() => onShowAdd()}></CloseButton>
         <form
           className="form new-skill"
           onSubmit={(e) => {
@@ -25,7 +25,7 @@ export default function NewSkill({ types, onAddNew }) {
               return;
             }
 
-            onAddNew(newSkill);
+            onAddSkill(newSkill);
           }}
         >
           <h3>➕ Add</h3>

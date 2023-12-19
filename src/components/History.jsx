@@ -1,10 +1,10 @@
-import ClosePopup from "./ClosePopup";
+import CloseButton from "./CloseButton";
 
 export default function History({ skill, onShowHistory }) {
   return (
     <>
       <div className="history popup">
-        <ClosePopup></ClosePopup>
+        <CloseButton onClose={() => onShowHistory(skill)}></CloseButton>
         <h3>📃 Progress history of {skill.name}</h3>
 
         {skill.history.length === 0 && <div>Nothing here yet...</div>}
@@ -26,13 +26,6 @@ export default function History({ skill, onShowHistory }) {
                 </div>
               );
             })}
-
-        <button
-          className="button button-big"
-          onClick={() => onShowHistory(skill)}
-        >
-          Close
-        </button>
       </div>
       <div className="popup-blocker"></div>
     </>

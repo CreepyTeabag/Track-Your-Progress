@@ -1,13 +1,13 @@
 import { useState } from "react";
-import ClosePopup from "./ClosePopup";
+import CloseButton from "./CloseButton";
 
-export default function Update({ skill, onUpdate }) {
+export default function Update({ skill, onUpdate, onShowUpdate }) {
   const [currentProgress, setCurrentProgress] = useState("");
 
   return (
     <>
       <div className="popup">
-        <ClosePopup></ClosePopup>
+        <CloseButton onClose={() => onShowUpdate(skill)}></CloseButton>
         <form
           className="form"
           onSubmit={(e) => {

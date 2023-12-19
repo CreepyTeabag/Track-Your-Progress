@@ -1,5 +1,5 @@
 import EditButton from "./EditButton";
-import ClosePopup from "./ClosePopup";
+import CloseButton from "./CloseButton";
 
 export default function EditSkill({
   types,
@@ -8,11 +8,12 @@ export default function EditSkill({
   setEditedSkill,
   onEditSkill,
   onDeleteSkill,
+  onShowEdit,
 }) {
   return (
     <>
       <div className="block popup">
-        <ClosePopup></ClosePopup>
+        <CloseButton onClose={() => onShowEdit(skill)}></CloseButton>
         <form
           className="form new-skill"
           onSubmit={(e) => {

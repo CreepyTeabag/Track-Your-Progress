@@ -133,6 +133,7 @@ body {
 
 .history {
   grid-template-columns: 1fr;
+  padding-bottom: 2rem;
 }
 
 .new-skill {
@@ -147,6 +148,10 @@ body {
 .new-skill span {
   font-size: 12px;
   color: grey;
+}
+
+.popup {
+  position: relative;
 }
 
 /*---------------HISTORY ELEMENTS---------------*/

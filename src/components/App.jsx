@@ -150,7 +150,7 @@ function App() {
     setShowHistory(false);
   }
 
-  function handleAddNew(newSkill) {
+  function handleAddSkill(newSkill) {
     setSkills((skills) => [...skills, newSkill]);
     setShowAdd(false);
   }
@@ -190,11 +190,23 @@ function App() {
           handleShowEdit={handleShowEdit}
         />
 
-        {showUpdate && <Update skill={curSkill} onUpdate={handleUpdate} />}
+        {showUpdate && (
+          <Update
+            skill={curSkill}
+            onUpdate={handleUpdate}
+            onShowUpdate={handleShowUpdate}
+          />
+        )}
         {showHistory && (
           <History skill={curSkill} onShowHistory={handleShowHistory} />
         )}
-        {showAdd && <NewSkill types={initialTypes} onAddNew={handleAddNew} />}
+        {showAdd && (
+          <NewSkill
+            types={initialTypes}
+            onAddSkill={handleAddSkill}
+            onShowAdd={handleShowAdd}
+          />
+        )}
 
         {showEdit && (
           <EditSkill
@@ -204,6 +216,7 @@ function App() {
             setEditedSkill={setEditedSkill}
             onEditSkill={handleEditSkill}
             onDeleteSkill={handleDeleteSkill}
+            onShowEdit={handleShowEdit}
           />
         )}
 

@@ -1,6 +1,7 @@
-export default function ClosePopup({ onClose }) {
+export default function CloseButton({ onClose }) {
   return (
-    // <span className="close-popup" onClick={onClose}>
-    <span className="button button-close">×</span>
+    <span className="button button-close" onClick={onClose}>
+      ×
+    </span>
   );
 }
