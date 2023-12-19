@@ -28,7 +28,7 @@ export default function Update({ skill, onUpdate, onShowUpdate }) {
           <button className="button button-big">Update</button>
         </form>
       </div>
-      <div className="popup-blocker"></div>
+      <div className="popup-blocker" onClick={() => onShowUpdate(skill)}></div>
     </>
   );
 }

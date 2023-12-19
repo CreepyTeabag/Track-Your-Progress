@@ -72,7 +72,7 @@ export default function NewSkill({ types, onAddSkill, onShowAdd }) {
           <AddButton>Add to the list</AddButton>
         </form>
       </div>
-      <div className="popup-blocker"></div>
+      <div className="popup-blocker" onClick={() => onShowAdd()}></div>
     </>
   );
 }

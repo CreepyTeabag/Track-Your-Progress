@@ -27,7 +27,7 @@ export default function History({ skill, onShowHistory }) {
               );
             })}
       </div>
-      <div className="popup-blocker"></div>
+      <div className="popup-blocker" onClick={() => onShowHistory(skill)}></div>
     </>
   );
 }

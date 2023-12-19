@@ -72,7 +72,7 @@ export default function EditSkill({
           </EditButton>
         </form>
       </div>
-      <div className="popup-blocker"></div>
+      <div className="popup-blocker" onClick={() => onShowEdit(skill)}></div>
     </>
   );
 }
