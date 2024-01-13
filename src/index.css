@@ -61,6 +61,10 @@ body {
   color: #e1e2e2;
 }
 
+.dark .button-sort {
+  color: #e1e2e2;
+}
+
 .dark.button-big.danger:hover {
   color: #e1e2e2;
 }
@@ -295,6 +299,13 @@ body {
   opacity: 1;
 }
 
+.sort select {
+  position: absolute;
+  top: -0.3rem;
+  right: 0;
+  width: 9.4rem;
+}
+
 /*--------------------BUTTONS-------------------*/
 .button {
   border: none;
@@ -346,6 +357,27 @@ body {
   top: 0;
   right: 0.6rem;
   font-size: 2rem;
+}
+
+.sort {
+  height: 0;
+  overflow: visible;
+  position: relative;
+}
+
+.button-sort {
+  position: absolute;
+  top: -0.3rem;
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  line-height: 0.2;
+  padding: 0.8rem 0.1rem;
+  color: #495057;
+}
+
+.button-sort:hover {
+  background-color: var(--color-medium);
 }
 
 /*-------------------RESPONSIVE-----------------*/
@@ -495,6 +527,21 @@ body {
 
   .popup {
     width: 26.5rem;
+  }
+
+  .button-sort {
+    top: -0.8rem;
+    left: -0.5rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    padding: 0.6rem 0;
+  }
+
+  .sort select {
+    position: absolute;
+    top: -1rem;
+    right: unset;
+    left: -1rem;
   }
 }
 
