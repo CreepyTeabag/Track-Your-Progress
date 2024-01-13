@@ -254,6 +254,14 @@ body {
   height: 100%;
 }
 
+.hint {
+  display: grid;
+  grid-column: 1 / -1;
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
 .add-skill {
   display: flex;
   justify-content: center;

@@ -21,15 +21,21 @@ export default function Table({
         <p> </p>
       </div>
       <div className="skills-list">
-        {skills.map((skill) => (
-          <Skill
-            key={skill.name}
-            skill={skill}
-            onShowUpdate={handleShowUpdate}
-            onShowHistory={handleShowHistory}
-            onShowEdit={handleShowEdit}
-          />
-        ))}
+        {skills.length > 0 &&
+          skills.map((skill) => (
+            <Skill
+              key={skill.name}
+              skill={skill}
+              onShowUpdate={handleShowUpdate}
+              onShowHistory={handleShowHistory}
+              onShowEdit={handleShowEdit}
+            />
+          ))}
+        {(!skills || skills.length === 0) && (
+          <div className="hint">
+            Add a new skill by clicking the ➕ button below!
+          </div>
+        )}
       </div>
       <AddButton onShowAdd={handleShowAdd}>➕</AddButton>
     </div>
