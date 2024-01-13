@@ -22,7 +22,11 @@ export default function Update({ skill, onUpdate, onShowUpdate }) {
             type="text"
             className="input"
             value={currentProgress}
-            onChange={(e) => setCurrentProgress(e.target.value)}
+            onChange={(e) => {
+              if (!isNaN(e.target.value)) {
+                setCurrentProgress(e.target.value);
+              }
+            }}
           />
 
           <button className="button button-big">Update</button>

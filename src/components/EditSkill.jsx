@@ -64,7 +64,12 @@ export default function EditSkill({
             value={editedSkill.size}
             onChange={(e) => {
               console.log(e);
-              setEditedSkill({ ...editedSkill, size: Number(e.target.value) });
+              if (!isNaN(e.target.value)) {
+                setEditedSkill({
+                  ...editedSkill,
+                  size: Number(e.target.value),
+                });
+              }
             }}
           />
           <EditButton skill={skill} onDeleteSkill={onDeleteSkill}>

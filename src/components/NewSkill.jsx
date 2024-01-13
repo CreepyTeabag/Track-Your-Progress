@@ -65,9 +65,11 @@ export default function NewSkill({ types, onAddSkill, onShowAdd }) {
             type="text"
             className="input"
             value={newSkill.size}
-            onChange={(e) =>
-              setNewSkill({ ...newSkill, size: Number(e.target.value) })
-            }
+            onChange={(e) => {
+              if (!isNaN(e.target.value)) {
+                setNewSkill({ ...newSkill, size: Number(e.target.value) });
+              }
+            }}
           />
           <AddButton>Add to the list</AddButton>
         </form>
