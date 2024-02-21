@@ -45,6 +45,7 @@ body {
   --color-lightest: #587abd;
   --color-light: #213969;
   --color-light-rgb: 33, 57, 105;
+  --color-medium-light: #132a59;
   --color-medium: #0b1b3a;
   --color-medium-rgb: 11, 27, 58;
   --color-dark: #001b51;
@@ -66,7 +67,7 @@ body {
 }
 
 .dark .progress {
-  box-shadow: 0px 0px 3px 1px rgba(var(--color-dark-rgb), 0.4);
+  outline: 1px solid rgba(var(--color-dark-rgb), 0.4);
 }
 
 /*------------CONTAINERS & VARIABLES------------*/
@@ -88,6 +89,7 @@ body {
   --color-lightest: #fff3da;
   --color-light: #faebcc;
   --color-light-rgb: 250, 235, 204;
+  --color-medium-light: #ffe4ab;
   --color-medium: #ffdb8e;
   --color-medium-rgb: 255, 219, 142;
   --color-dark: #f0bb49;
@@ -244,7 +246,7 @@ body {
   height: 0.8rem;
   margin-left: 0.5rem;
   border-radius: 100px;
-  box-shadow: 0px 0px 3px 1px rgba(var(--accent-rgb), 0.2);
+  outline: 1px solid rgba(var(--accent-rgb), 0.3);
   overflow: hidden;
 }
 
@@ -270,7 +272,7 @@ body {
 }
 
 .skills-list + .add-skill {
-  box-shadow: 0px 0px 10px 6px rgba(var(--color-dark-rgb), 0.2);
+  background-color: var(--color-medium-light);
 }
 
 .add-skill .button-big,
