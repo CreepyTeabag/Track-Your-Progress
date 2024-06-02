@@ -7,6 +7,7 @@ export default function EditSkill({
   editedSkill,
   setEditedSkill,
   onEditSkill,
+  onArchiveSkill,
   onDeleteSkill,
   onShowEdit,
 }) {
@@ -72,7 +73,11 @@ export default function EditSkill({
               }
             }}
           />
-          <EditButton skill={skill} onDeleteSkill={onDeleteSkill}>
+          <EditButton
+            skill={skill}
+            onDeleteSkill={onDeleteSkill}
+            onArchiveSkill={onArchiveSkill}
+          >
             Apply changes
           </EditButton>
         </form>

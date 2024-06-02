@@ -328,6 +328,12 @@ body {
   background-color: var(--color-dark);
 }
 
+.button-archive {
+  margin-left: 4rem;
+  padding: 0rem 0.4rem;
+  font-size: 1.5rem;
+}
+
 .button-theme {
   position: fixed;
   bottom: 3vh;

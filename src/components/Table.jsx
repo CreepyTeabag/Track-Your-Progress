@@ -1,4 +1,3 @@
-import AddButton from "./AddButton";
 import Skill from "./Skill";
 
 export default function Table({
@@ -7,6 +6,7 @@ export default function Table({
   handleShowHistory,
   handleShowAdd,
   handleShowEdit,
+  children,
 }) {
   return (
     <div className="block">
@@ -37,7 +37,7 @@ export default function Table({
           </div>
         )}
       </div>
-      <AddButton onShowAdd={handleShowAdd}>➕</AddButton>
+      {children}
     </div>
   );
 }

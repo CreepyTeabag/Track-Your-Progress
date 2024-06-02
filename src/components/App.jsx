@@ -5,6 +5,8 @@ import Table from "./Table";
 import Update from "./Update";
 import History from "./History";
 import ThemeButton from "./ThemeButton";
+import SettingsButton from "./SettingsButton";
+import AddButton from "./AddButton";
 
 const initialSkills = [
   {
@@ -56,6 +58,8 @@ const initialTypes = [
 
 function App() {
   const [skills, setSkills] = useState(initialSkills);
+
+  const [archivedSkills, setArchivedSkills] = useState([]);
 
   const [showUpdate, setShowUpdate] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
@@ -116,6 +120,10 @@ function App() {
     }
   }
 
+  function handleShowSettings() {
+    console.log("show settings");
+  }
+
   function handleUpdate(update) {
     if (update <= curSkill.currentProgress) {
       alert(
@@ -166,6 +174,23 @@ function App() {
     setShowEdit(false);
   }
 
+  function handleArchiveSkill(archivedSkill) {
+    console.log(archivedSkill);
+
+    const confirmed = window.confirm(
+      `Are you sure you want to archive "${archivedSkill.name}"? ${archivedSkill.name} will disappear from your list of skills. You can find it in the archive and restore it if you need to.`
+    );
+    if (!confirmed) return;
+
+    setSkills((prevSkills) =>
+      prevSkills.filter((skill) => skill.id !== archivedSkill.id)
+    );
+    setArchivedSkills((prevSkills) => [...prevSkills, archivedSkill]);
+    setShowEdit(false);
+    setCurSkill(null);
+  }
+  console.log(archivedSkills);
+
   function handleDeleteSkill(deletedSkill) {
     const confirmed = window.confirm(
       `Are you sure you want to delete "${deletedSkill.name}"? This action is irreversible!`
@@ -188,7 +213,9 @@ function App() {
           handleShowHistory={handleShowHistory}
           handleShowAdd={handleShowAdd}
           handleShowEdit={handleShowEdit}
-        />
+        >
+          <AddButton onShowAdd={handleShowAdd}>➕</AddButton>
+        </Table>
 
         {showUpdate && (
           <Update
@@ -216,11 +243,13 @@ function App() {
             setEditedSkill={setEditedSkill}
             onEditSkill={handleEditSkill}
             onDeleteSkill={handleDeleteSkill}
+            onArchiveSkill={handleArchiveSkill}
             onShowEdit={handleShowEdit}
           />
         )}
 
-        <ThemeButton isDark={isDark} setIsDark={setIsDark}></ThemeButton>
+        <ThemeButton isDark={isDark} setIsDark={setIsDark} />
+        <SettingsButton onShowSettings={handleShowSettings} />
       </div>
     </div>
   );
