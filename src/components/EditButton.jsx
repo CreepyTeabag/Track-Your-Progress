@@ -1,9 +1,8 @@
-export default function EditButton({
-  children,
-  skill,
-  onShowAdd,
-  onDeleteSkill,
-}) {
+import { useSkills } from "../context/SkillsContext";
+
+export default function EditButton({ children, onShowAdd, setShowEdit }) {
+  const { curSkill, handleDeleteSkill } = useSkills();
+
   return (
     <div className="edit-skill">
       <button className="button button-big" onClick={onShowAdd}>
@@ -13,7 +12,8 @@ export default function EditButton({
         className="button button-big danger"
         onClick={(e) => {
           e.preventDefault();
-          onDeleteSkill(skill);
+          handleDeleteSkill(curSkill);
+          setShowEdit(false);
         }}
       >
         Delete

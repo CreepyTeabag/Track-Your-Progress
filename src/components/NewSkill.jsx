@@ -1,8 +1,9 @@
 import { useState } from "react";
 import AddButton from "./AddButton";
 import CloseButton from "./CloseButton";
+import { useSkills } from "../context/SkillsContext";
 
-export default function NewSkill({ types, onAddSkill, onShowAdd }) {
+export default function NewSkill({ types, onShowAdd, setShowAdd }) {
   const [newSkill, setNewSkill] = useState({
     id: new Date().valueOf(),
     name: "",
@@ -12,6 +13,8 @@ export default function NewSkill({ types, onAddSkill, onShowAdd }) {
     size: 0,
     history: [],
   });
+
+  const { handleAddSkill } = useSkills();
 
   return (
     <>
@@ -25,7 +28,8 @@ export default function NewSkill({ types, onAddSkill, onShowAdd }) {
               return;
             }
 
-            onAddSkill(newSkill);
+            handleAddSkill(newSkill);
+            setShowAdd(false);
           }}
         >
           <h3>➕ Add</h3>

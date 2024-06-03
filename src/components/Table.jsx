@@ -1,13 +1,15 @@
+import { useSkills } from "../context/SkillsContext";
 import AddButton from "./AddButton";
 import Skill from "./Skill";
 
 export default function Table({
-  skills,
   handleShowUpdate,
   handleShowHistory,
   handleShowAdd,
   handleShowEdit,
 }) {
+  const { skills } = useSkills();
+
   return (
     <div className="block">
       <div className="header">

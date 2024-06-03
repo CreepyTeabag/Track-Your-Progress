@@ -1,23 +1,32 @@
 import { useState } from "react";
 import CloseButton from "./CloseButton";
+import { useSkills } from "../context/SkillsContext";
 
-export default function Update({ skill, onUpdate, onShowUpdate }) {
+export default function Update({
+  onShowUpdate,
+  setShowUpdate,
+  setShowHistory,
+}) {
   const [currentProgress, setCurrentProgress] = useState("");
+
+  const { curSkill, handleUpdate } = useSkills();
 
   return (
     <>
       <div className="popup">
-        <CloseButton onClose={() => onShowUpdate(skill)}></CloseButton>
+        <CloseButton onClose={() => onShowUpdate(curSkill)}></CloseButton>
         <form
           className="form"
           onSubmit={(e) => {
             e.preventDefault();
-            onUpdate(Number(currentProgress));
+            handleUpdate(Number(currentProgress));
+            setShowUpdate(false);
+            setShowHistory(false);
           }}
         >
-          <h3>📈 Update progress on {skill.name}</h3>
+          <h3>📈 Update progress on {curSkill.name}</h3>
 
-          <label>What {skill.counterWord} are you on?</label>
+          <label>What {curSkill.counterWord} are you on?</label>
           <input
             type="text"
             className="input"
@@ -32,7 +41,10 @@ export default function Update({ skill, onUpdate, onShowUpdate }) {
           <button className="button button-big">Update</button>
         </form>
       </div>
-      <div className="popup-blocker" onClick={() => onShowUpdate(skill)}></div>
+      <div
+        className="popup-blocker"
+        onClick={() => onShowUpdate(curSkill)}
+      ></div>
     </>
   );
 }
