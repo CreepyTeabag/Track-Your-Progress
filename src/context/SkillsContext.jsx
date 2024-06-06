@@ -47,9 +47,9 @@ const SkillsContext = createContext();
 function SkillsProvider({ children }) {
   const [skills, setSkills] = useState(initialSkills);
   const [curSkill, setCurSkill] = useState(null);
-  const [editedSkill, setEditedSkill] = useState(curSkill);
+  const [editedSkill, setEditedSkill] = useState(null);
 
-  function handleUpdate(update, otherActions) {
+  function handleUpdate(update) {
     if (update <= curSkill.currentProgress) {
       alert(
         `You can't set progress below its current value (${curSkill.counterWord} ${curSkill.currentProgress})`
@@ -68,7 +68,7 @@ function SkillsProvider({ children }) {
 
     setSkills((prev) =>
       prev.map((skill) =>
-        skill.name === curSkill.name
+        skill.id === curSkill.id
           ? {
               ...skill,
               currentProgress: update,
