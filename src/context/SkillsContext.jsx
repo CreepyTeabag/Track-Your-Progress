@@ -1,4 +1,4 @@
-const { createContext, useContext, useState } = require("react");
+const { createContext, useContext, useState, useReducer } = require("react");
 
 const initialSkills = [
   {
@@ -42,12 +42,111 @@ const initialSkills = [
   },
 ];
 
+const initialState = {
+  isShowUpdate: false,
+  isShowHistory: false,
+  isShowAdd: false,
+  isShowEdit: false,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "modal/openUpdate":
+      return {
+        ...state,
+        isShowUpdate: true,
+        isShowHistory: false,
+        isShowAdd: false,
+        isShowEdit: false,
+      };
+    case "modal/openHistory":
+      return {
+        ...state,
+        isShowUpdate: false,
+        isShowHistory: true,
+        isShowAdd: false,
+        isShowEdit: false,
+      };
+    case "modal/openAdd":
+      return {
+        ...state,
+        isShowUpdate: false,
+        isShowHistory: false,
+        isShowAdd: true,
+        isShowEdit: false,
+      };
+    case "modal/openEdit":
+      return {
+        ...state,
+        isShowUpdate: false,
+        isShowHistory: false,
+        isShowAdd: false,
+        isShowEdit: true,
+      };
+    case "modal/closeAllModals":
+      return {
+        ...state,
+        isShowUpdate: false,
+        isShowHistory: false,
+        isShowAdd: false,
+        isShowEdit: false,
+      };
+    default:
+      throw new Error("Unknown action");
+  }
+}
+
 const SkillsContext = createContext();
 
 function SkillsProvider({ children }) {
   const [skills, setSkills] = useState(initialSkills);
   const [curSkill, setCurSkill] = useState(null);
   const [editedSkill, setEditedSkill] = useState(null);
+
+  const [{ isShowUpdate, isShowHistory, isShowAdd, isShowEdit }, dispatch] =
+    useReducer(reducer, initialState);
+
+  function handleShowUpdate(skill) {
+    if (curSkill === null || curSkill.id !== skill.id) {
+      setCurSkill(skill);
+      dispatch({ type: "modal/openUpdate" });
+    } else {
+      dispatch({ type: "modal/closeAllModals" });
+      setCurSkill(null);
+    }
+  }
+
+  function handleShowHistory(skill) {
+    if (curSkill === null || curSkill.id !== skill.id) {
+      setCurSkill(skill);
+      dispatch({ type: "modal/openHistory" });
+    } else {
+      dispatch({ type: "modal/closeAllModals" });
+      setCurSkill(null);
+    }
+  }
+
+  function handleShowAdd() {
+    setCurSkill(null);
+    dispatch({ type: "modal/openAdd" });
+  }
+
+  function handleShowEdit(skill) {
+    setEditedSkill(skill);
+
+    if (curSkill === null || curSkill.id !== skill.id) {
+      setCurSkill(skill);
+      dispatch({ type: "modal/openEdit" });
+    } else {
+      dispatch({ type: "modal/closeAllModals" });
+      setCurSkill(null);
+    }
+  }
+
+  function handleCloseAllModals() {
+    dispatch({ type: "modal/closeAllModals" });
+    setCurSkill(null);
+  }
 
   function handleUpdate(update) {
     const date = new Date();
@@ -101,6 +200,15 @@ function SkillsProvider({ children }) {
         handleAddSkill,
         handleEditSkill,
         handleDeleteSkill,
+        isShowUpdate,
+        isShowHistory,
+        isShowAdd,
+        isShowEdit,
+        handleShowUpdate,
+        handleShowHistory,
+        handleShowAdd,
+        handleShowEdit,
+        handleCloseAllModals,
       }}
     >
       {children}

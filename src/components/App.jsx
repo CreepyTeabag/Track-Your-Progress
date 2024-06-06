@@ -14,96 +14,19 @@ const initialTypes = [
 ];
 
 function App() {
-  const { curSkill, setCurSkill, setEditedSkill } = useSkills();
-
-  const [showUpdate, setShowUpdate] = useState(false);
-  const [showHistory, setShowHistory] = useState(false);
-  const [showAdd, setShowAdd] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
+  const { isShowUpdate, isShowHistory, isShowAdd, isShowEdit } = useSkills();
 
   const [isDark, setIsDark] = useState(false);
-
-  function handleShowUpdate(skill) {
-    setShowHistory(false);
-    setShowAdd(false);
-    setShowEdit(false);
-
-    if (curSkill === null || curSkill.name !== skill.name) {
-      setCurSkill(skill);
-      setShowUpdate(true);
-    } else {
-      setShowUpdate((open) => !open);
-    }
-  }
-
-  function handleShowHistory(skill) {
-    setShowUpdate(false);
-    setShowAdd(false);
-    setShowEdit(false);
-
-    if (curSkill === null || curSkill.name !== skill.name) {
-      setCurSkill(skill);
-      setShowHistory(true);
-    } else {
-      setShowHistory((open) => !open);
-    }
-  }
-
-  function handleShowAdd() {
-    setShowUpdate(false);
-    setShowHistory(false);
-    setShowEdit(false);
-    setCurSkill(null);
-    setShowAdd((open) => !open);
-  }
-
-  function handleShowEdit(skill) {
-    setShowUpdate(false);
-    setShowHistory(false);
-    setShowAdd(false);
-    setEditedSkill(skill);
-
-    if (curSkill === null || curSkill.name !== skill.name) {
-      setCurSkill(skill);
-      setShowEdit(true);
-    } else {
-      setShowEdit((open) => !open);
-    }
-  }
 
   return (
     <div className={`App${isDark ? " dark" : ""}`}>
       <div className="container">
-        <Table
-          handleShowUpdate={handleShowUpdate}
-          handleShowHistory={handleShowHistory}
-          handleShowAdd={handleShowAdd}
-          handleShowEdit={handleShowEdit}
-        />
+        <Table />
 
-        {showUpdate && (
-          <Update
-            setShowUpdate={setShowUpdate}
-            setShowHistory={setShowHistory}
-            onShowUpdate={handleShowUpdate}
-          />
-        )}
-        {showHistory && <History onShowHistory={handleShowHistory} />}
-        {showAdd && (
-          <NewSkill
-            types={initialTypes}
-            onShowAdd={handleShowAdd}
-            setShowAdd={setShowAdd}
-          />
-        )}
-
-        {showEdit && (
-          <EditSkill
-            types={initialTypes}
-            onShowEdit={handleShowEdit}
-            setShowEdit={setShowEdit}
-          />
-        )}
+        {isShowUpdate && <Update />}
+        {isShowHistory && <History />}
+        {isShowAdd && <NewSkill types={initialTypes} />}
+        {isShowEdit && <EditSkill types={initialTypes} />}
 
         <ThemeButton isDark={isDark} setIsDark={setIsDark}></ThemeButton>
       </div>

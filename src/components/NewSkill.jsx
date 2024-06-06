@@ -3,7 +3,7 @@ import AddButton from "./AddButton";
 import CloseButton from "./CloseButton";
 import { useSkills } from "../context/SkillsContext";
 
-export default function NewSkill({ types, onShowAdd, setShowAdd }) {
+export default function NewSkill({ types }) {
   const [newSkill, setNewSkill] = useState({
     id: new Date().valueOf(),
     name: "",
@@ -14,12 +14,12 @@ export default function NewSkill({ types, onShowAdd, setShowAdd }) {
     history: [],
   });
 
-  const { handleAddSkill } = useSkills();
+  const { handleAddSkill, handleCloseAllModals } = useSkills();
 
   return (
     <>
       <div className="block popup">
-        <CloseButton onClose={() => onShowAdd()}></CloseButton>
+        <CloseButton />
         <form
           className="form new-skill"
           onSubmit={(e) => {
@@ -29,7 +29,7 @@ export default function NewSkill({ types, onShowAdd, setShowAdd }) {
             }
 
             handleAddSkill(newSkill);
-            setShowAdd(false);
+            handleCloseAllModals();
           }}
         >
           <h3>➕ Add</h3>
@@ -78,7 +78,7 @@ export default function NewSkill({ types, onShowAdd, setShowAdd }) {
           <AddButton>Add to the list</AddButton>
         </form>
       </div>
-      <div className="popup-blocker" onClick={() => onShowAdd()}></div>
+      <div className="popup-blocker" onClick={handleCloseAllModals}></div>
     </>
   );
 }

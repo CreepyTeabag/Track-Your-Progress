@@ -1,9 +1,8 @@
-export default function Skill({
-  skill,
-  onShowUpdate,
-  onShowHistory,
-  onShowEdit,
-}) {
+import { useSkills } from "../context/SkillsContext";
+
+export default function Skill({ skill }) {
+  const { handleShowUpdate, handleShowHistory, handleShowEdit } = useSkills();
+
   let percentage = (skill.currentProgress / skill.size) * 100;
   if (percentage > 0 && percentage < 1) percentage = 1;
   else percentage = Math.round(percentage);
@@ -14,7 +13,7 @@ export default function Skill({
         {percentage < 100 ? (
           <button
             className="button button-small round"
-            onClick={() => onShowUpdate(skill)}
+            onClick={() => handleShowUpdate(skill)}
           >
             📈
           </button>
@@ -50,7 +49,7 @@ export default function Skill({
       <li>
         <button
           className="button button-small round"
-          onClick={() => onShowEdit(skill)}
+          onClick={() => handleShowEdit(skill)}
         >
           ✏️
         </button>
@@ -58,7 +57,7 @@ export default function Skill({
       <li>
         <button
           className="button button-small round"
-          onClick={() => onShowHistory(skill)}
+          onClick={() => handleShowHistory(skill)}
         >
           📃
         </button>

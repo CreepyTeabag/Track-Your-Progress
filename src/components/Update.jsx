@@ -2,14 +2,10 @@ import { useCallback, useState } from "react";
 import CloseButton from "./CloseButton";
 import { useSkills } from "../context/SkillsContext";
 
-export default function Update({
-  onShowUpdate,
-  setShowUpdate,
-  setShowHistory,
-}) {
+export default function Update() {
   const [currentProgress, setCurrentProgress] = useState("");
 
-  const { curSkill, handleUpdate } = useSkills();
+  const { curSkill, handleUpdate, handleCloseAllModals } = useSkills();
 
   const handleSubmit = useCallback(() => {
     const updatedProgress = Number(currentProgress);
@@ -29,22 +25,20 @@ export default function Update({
     }
 
     handleUpdate(updatedProgress);
-    setShowUpdate(false);
-    setShowHistory(false);
+    handleCloseAllModals();
   }, [
     currentProgress,
     curSkill.currentProgress,
     curSkill.size,
     curSkill.counterWord,
     handleUpdate,
-    setShowUpdate,
-    setShowHistory,
+    handleCloseAllModals,
   ]);
 
   return (
     <>
       <div className="popup">
-        <CloseButton onClose={() => onShowUpdate(curSkill)}></CloseButton>
+        <CloseButton />
         <form
           className="form"
           onSubmit={(e) => {
@@ -69,10 +63,7 @@ export default function Update({
           <button className="button button-big">Update</button>
         </form>
       </div>
-      <div
-        className="popup-blocker"
-        onClick={() => onShowUpdate(curSkill)}
-      ></div>
+      <div className="popup-blocker" onClick={handleCloseAllModals}></div>
     </>
   );
 }

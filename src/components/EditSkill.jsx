@@ -2,20 +2,25 @@ import EditButton from "./EditButton";
 import CloseButton from "./CloseButton";
 import { useSkills } from "../context/SkillsContext";
 
-export default function EditSkill({ types, onShowEdit, setShowEdit }) {
-  const { curSkill, editedSkill, setEditedSkill, handleEditSkill } =
-    useSkills();
+export default function EditSkill({ types }) {
+  const {
+    curSkill,
+    editedSkill,
+    setEditedSkill,
+    handleEditSkill,
+    handleCloseAllModals,
+  } = useSkills();
 
   return (
     <>
       <div className="block popup">
-        <CloseButton onClose={() => onShowEdit(curSkill)}></CloseButton>
+        <CloseButton />
         <form
           className="form new-skill"
           onSubmit={(e) => {
             e.preventDefault();
             handleEditSkill(editedSkill);
-            setShowEdit(false);
+            handleCloseAllModals();
           }}
         >
           <h3>✏️ Edit</h3>
@@ -68,10 +73,10 @@ export default function EditSkill({ types, onShowEdit, setShowEdit }) {
               }
             }}
           />
-          <EditButton setShowEdit={setShowEdit}>Apply changes</EditButton>
+          <EditButton>Apply changes</EditButton>
         </form>
       </div>
-      <div className="popup-blocker" onClick={() => onShowEdit(curSkill)}></div>
+      <div className="popup-blocker" onClick={handleCloseAllModals}></div>
     </>
   );
 }
