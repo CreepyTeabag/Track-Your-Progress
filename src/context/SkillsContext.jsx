@@ -50,20 +50,6 @@ function SkillsProvider({ children }) {
   const [editedSkill, setEditedSkill] = useState(null);
 
   function handleUpdate(update) {
-    if (update <= curSkill.currentProgress) {
-      alert(
-        `You can't set progress below its current value (${curSkill.counterWord} ${curSkill.currentProgress})`
-      );
-      return;
-    }
-
-    if (update > curSkill.size) {
-      alert(
-        `You can't set progress above its size (${curSkill.size} ${curSkill.counterWord}s)`
-      );
-      return;
-    }
-
     const date = new Date();
 
     setSkills((prev) =>
@@ -96,11 +82,6 @@ function SkillsProvider({ children }) {
   }
 
   function handleDeleteSkill(deletedSkill) {
-    const confirmed = window.confirm(
-      `Are you sure you want to delete "${deletedSkill.name}"? This action is irreversible!`
-    );
-    if (!confirmed) return;
-
     setSkills((prevSkills) =>
       prevSkills.filter((skill) => skill.id !== deletedSkill.id)
     );

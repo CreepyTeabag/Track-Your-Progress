@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import CloseButton from "./CloseButton";
 import { useSkills } from "../context/SkillsContext";
 
@@ -11,6 +11,36 @@ export default function Update({
 
   const { curSkill, handleUpdate } = useSkills();
 
+  const handleSubmit = useCallback(() => {
+    const updatedProgress = Number(currentProgress);
+
+    if (updatedProgress <= curSkill.currentProgress) {
+      alert(
+        `You can't set progress below its current value (${curSkill.counterWord} ${curSkill.currentProgress})`
+      );
+      return;
+    }
+
+    if (updatedProgress > curSkill.size) {
+      alert(
+        `You can't set progress above its size (${curSkill.size} ${curSkill.counterWord}s)`
+      );
+      return;
+    }
+
+    handleUpdate(updatedProgress);
+    setShowUpdate(false);
+    setShowHistory(false);
+  }, [
+    currentProgress,
+    curSkill.currentProgress,
+    curSkill.size,
+    curSkill.counterWord,
+    handleUpdate,
+    setShowUpdate,
+    setShowHistory,
+  ]);
+
   return (
     <>
       <div className="popup">
@@ -19,9 +49,7 @@ export default function Update({
           className="form"
           onSubmit={(e) => {
             e.preventDefault();
-            handleUpdate(Number(currentProgress));
-            setShowUpdate(false);
-            setShowHistory(false);
+            handleSubmit();
           }}
         >
           <h3>📈 Update progress on {curSkill.name}</h3>
