@@ -1,16 +1,19 @@
 import CloseButton from "./CloseButton";
+import { useSkills } from "../context/SkillsContext";
 
-export default function History({ skill, onShowHistory }) {
+export default function History() {
+  const { curSkill, handleCloseAllModals } = useSkills();
+
   return (
     <>
       <div className="history popup">
-        <CloseButton onClose={() => onShowHistory(skill)}></CloseButton>
-        <h3>📃 Progress history of {skill.name}</h3>
+        <CloseButton />
+        <h3>📃 Progress history of {curSkill.name}</h3>
 
-        {skill.history.length === 0 && <div>Nothing here yet...</div>}
+        {curSkill.history.length === 0 && <div>Nothing here yet...</div>}
 
-        {skill.history.length > 0 &&
-          skill.history
+        {curSkill.history.length > 0 &&
+          curSkill.history
             .slice(0)
             .reverse()
             .map((day, i) => {
@@ -21,13 +24,13 @@ export default function History({ skill, onShowHistory }) {
                   <div className="date">{date}</div>
                   <hr />
                   <div className="amount">
-                    {skill.counterWord} #{day.progress}
+                    {curSkill.counterWord} #{day.progress}
                   </div>
                 </div>
               );
             })}
       </div>
-      <div className="popup-blocker" onClick={() => onShowHistory(skill)}></div>
+      <div className="popup-blocker" onClick={handleCloseAllModals}></div>
     </>
   );
 }

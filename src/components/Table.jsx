@@ -1,13 +1,10 @@
+import { useSkills } from "../context/SkillsContext";
 import AddButton from "./AddButton";
 import Skill from "./Skill";
 
-export default function Table({
-  skills,
-  handleShowUpdate,
-  handleShowHistory,
-  handleShowAdd,
-  handleShowEdit,
-}) {
+export default function Table() {
+  const { skills } = useSkills();
+
   return (
     <div className="block">
       <div className="header">
@@ -22,22 +19,14 @@ export default function Table({
       </div>
       <div className="skills-list">
         {skills.length > 0 &&
-          skills.map((skill) => (
-            <Skill
-              key={skill.name}
-              skill={skill}
-              onShowUpdate={handleShowUpdate}
-              onShowHistory={handleShowHistory}
-              onShowEdit={handleShowEdit}
-            />
-          ))}
+          skills.map((skill) => <Skill key={skill.id} skill={skill} />)}
         {(!skills || skills.length === 0) && (
           <div className="hint">
             Add a new skill by clicking the ➕ button below!
           </div>
         )}
       </div>
-      <AddButton onShowAdd={handleShowAdd}>➕</AddButton>
+      <AddButton>➕</AddButton>
     </div>
   );
 }

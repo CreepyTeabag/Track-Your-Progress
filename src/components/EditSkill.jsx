@@ -1,30 +1,32 @@
 import EditButton from "./EditButton";
 import CloseButton from "./CloseButton";
+import { useSkills } from "../context/SkillsContext";
 
-export default function EditSkill({
-  types,
-  skill,
-  editedSkill,
-  setEditedSkill,
-  onEditSkill,
-  onDeleteSkill,
-  onShowEdit,
-}) {
+export default function EditSkill({ types }) {
+  const {
+    curSkill,
+    editedSkill,
+    setEditedSkill,
+    handleEditSkill,
+    handleCloseAllModals,
+  } = useSkills();
+
   return (
     <>
       <div className="block popup">
-        <CloseButton onClose={() => onShowEdit(skill)}></CloseButton>
+        <CloseButton />
         <form
           className="form new-skill"
           onSubmit={(e) => {
             e.preventDefault();
-            onEditSkill(editedSkill);
+            handleEditSkill(editedSkill);
+            handleCloseAllModals();
           }}
         >
           <h3>✏️ Edit</h3>
 
           <label>
-            Name <span>({skill.name})</span>:
+            Name <span>({curSkill.name})</span>:
           </label>
           <input
             type="text"
@@ -36,7 +38,7 @@ export default function EditSkill({
           />
 
           <label>
-            Type <span>({skill.type})</span>:
+            Type <span>({curSkill.type})</span>:
           </label>
           <select
             className="input"
@@ -57,13 +59,12 @@ export default function EditSkill({
             ))}
           </select>
 
-          <label>Size{<span> (in {skill.counterWord}s)</span>}:</label>
+          <label>Size{<span> (in {curSkill.counterWord}s)</span>}:</label>
           <input
             type="text"
             className="input"
             value={editedSkill.size}
             onChange={(e) => {
-              console.log(e);
               if (!isNaN(e.target.value)) {
                 setEditedSkill({
                   ...editedSkill,
@@ -72,12 +73,10 @@ export default function EditSkill({
               }
             }}
           />
-          <EditButton skill={skill} onDeleteSkill={onDeleteSkill}>
-            Apply changes
-          </EditButton>
+          <EditButton>Apply changes</EditButton>
         </form>
       </div>
-      <div className="popup-blocker" onClick={() => onShowEdit(skill)}></div>
+      <div className="popup-blocker" onClick={handleCloseAllModals}></div>
     </>
   );
 }
