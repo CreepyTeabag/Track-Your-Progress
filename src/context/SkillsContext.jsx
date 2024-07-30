@@ -1,4 +1,4 @@
-const { createContext, useContext, useState, useReducer } = require("react");
+import { createContext, useContext, useState, useReducer } from "react";
 
 const initialSkills = [
   {
