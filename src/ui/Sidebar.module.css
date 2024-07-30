@@ -8,22 +8,26 @@
   width: 100vw;
   height: fit-content;
   padding: 0.5rem;
-  background-color: var(--color-dark);
+  background-color: var(--color-main-400);
+  color: var(--color-grey-950);
 }
 
 .button {
   all: unset;
   background-color: transparent;
   display: grid;
+  place-items: center;
   width: 2.5rem;
   height: 2.5rem;
+  padding: 0.25rem;
   cursor: pointer;
   outline: 3px solid transparent;
+  border-radius: 0.3rem;
   svg {
-    width: 2.5rem;
-    height: 2.5rem;
-    fill: #292929 !important;
-    stroke: #292929 !important;
+    width: 2rem;
+    height: 2rem;
+    fill: var(--color-grey-950) !important;
+    stroke: var(--color-grey-950) !important;
   }
   span {
     display: none;
@@ -31,10 +35,10 @@
 }
 
 .button:hover {
-  background-color: var(--color-medium);
+  background-color: var(--color-main-500);
 }
 .button:focus {
-  outline: 3px solid var(--color-lightest);
+  outline: 3px solid var(--color-main-100);
 }
 
 .themeButton {
@@ -62,10 +66,10 @@
   }
   .button {
     display: grid;
-    border-radius: 0.3rem;
     padding: 0.3rem;
     width: fit-content;
     height: 2rem;
+    place-items: unset;
     svg {
       width: 2rem;
       height: 2rem;
@@ -93,21 +97,21 @@
     transform: translate(0, -50%);
     width: 1.5rem;
     height: 1.5rem;
-    background-color: var(--color-dark);
+    background-color: var(--color-main-400);
     svg {
       width: 1.5rem;
       height: 1.5rem;
-      fill: #292929 !important;
-      stroke: #292929 !important;
+      fill: var(--color-grey-950) !important;
+      stroke: var(--color-grey-950) !important;
     }
     border-radius: 100rem;
     cursor: pointer;
   }
   .toggleButton:hover {
-    background-color: var(--color-medium);
+    background-color: var(--color-main-500);
   }
   .toggleButton:focus {
-    outline: 3px solid var(--color-light);
+    outline: 2px solid var(--color-main-950);
     outline-offset: 2px;
   }
 }
