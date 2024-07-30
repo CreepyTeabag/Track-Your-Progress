@@ -1,0 +1,113 @@
+.sidebar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: fit-content;
+  padding: 0.5rem;
+  background-color: var(--color-dark);
+}
+
+.button {
+  all: unset;
+  background-color: transparent;
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  outline: 3px solid transparent;
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: #292929 !important;
+    stroke: #292929 !important;
+  }
+  span {
+    display: none;
+  }
+}
+
+.button:hover {
+  background-color: var(--color-medium);
+}
+.button:focus {
+  outline: 3px solid var(--color-lightest);
+}
+
+.themeButton {
+  display: none;
+}
+
+.toggleButton {
+  display: none;
+}
+
+@media (width >= 900px) {
+  .sidebar {
+    position: relative;
+    top: 0;
+    right: unset;
+    width: fit-content;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: repeat(2, auto) 1fr repeat(2, auto);
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  .sidebar * {
+    transition: all 0.3s ease;
+  }
+  .button {
+    display: grid;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+    width: fit-content;
+    height: 2rem;
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  :global(.sidebarOpen) > .button {
+    width: 10rem;
+    padding: 0.3rem 0.7rem;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  :global(.sidebarOpen) > .button span {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  .toggleButton {
+    all: unset;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -0.5rem;
+    transform: translate(0, -50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--color-dark);
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: #292929 !important;
+      stroke: #292929 !important;
+    }
+    border-radius: 100rem;
+    cursor: pointer;
+  }
+  .toggleButton:hover {
+    background-color: var(--color-medium);
+  }
+  .toggleButton:focus {
+    outline: 3px solid var(--color-light);
+    outline-offset: 2px;
+  }
+}

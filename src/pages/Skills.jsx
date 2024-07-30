@@ -1,10 +1,9 @@
-import { useState } from "react";
-import NewSkill from "./NewSkill";
-import EditSkill from "./EditSkill";
-import Table from "./Table";
-import Update from "./Update";
-import History from "./History";
-import ThemeButton from "./ThemeButton";
+import EditSkill from "../components/EditSkill";
+import History from "../components/History";
+import NewSkill from "../components/NewSkill";
+import Table from "../components/Table";
+import ThemeButton from "../components/ThemeButton";
+import Update from "../components/Update";
 import { useSkills } from "../context/SkillsContext";
 
 const initialTypes = [
@@ -13,10 +12,8 @@ const initialTypes = [
   { typeName: "skill 💪", counterWord: "level" },
 ];
 
-function App() {
+function Skills({ isDark, setIsDark }) {
   const { isShowUpdate, isShowHistory, isShowAdd, isShowEdit } = useSkills();
-
-  const [isDark, setIsDark] = useState(false);
 
   return (
     <div className={`App${isDark ? " dark" : ""}`}>
@@ -34,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default Skills;
