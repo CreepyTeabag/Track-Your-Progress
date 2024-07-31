@@ -1,4 +1,5 @@
 .main {
+  container: main / inline-size;
   background-color: var(--color-main-50);
   padding: 0.5rem;
   overflow-x: hidden;

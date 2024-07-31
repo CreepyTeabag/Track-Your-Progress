@@ -20,7 +20,7 @@ export async function getSkill({ id }) {
 
   if (error) {
     console.error(error);
-    throw new Error("Skills could not be loaded");
+    throw new Error("Skill could not be loaded");
   }
 
   return { data };

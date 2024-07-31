@@ -1,0 +1,60 @@
+.update {
+  all: unset;
+  cursor: pointer;
+  width: 3.8rem;
+  height: 3.8rem;
+  display: grid;
+  place-items: center;
+  transition: all 0.3s ease;
+  border-radius: 0.3rem;
+  background-color: var(--color-main-500);
+  grid-area: update;
+}
+
+:global(.dark-mode) {
+  .update {
+    background-color: var(--color-main-700);
+  }
+
+  .update:hover {
+    background-color: var(--color-main-500);
+  }
+}
+
+.update svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: var(--color-main-900);
+  transition: all 0.3s ease;
+}
+
+.update:hover {
+  background-color: var(--color-main-400);
+  svg {
+    fill: var(--color-main-950);
+  }
+}
+
+.update:focus {
+  outline: 3px solid var(--color-main-400);
+  outline-offset: 2px;
+}
+
+.update:hover svg {
+  animation: jump-up 0.3s ease;
+}
+
+@keyframes jump-up {
+  from {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-0.1rem, 0.1rem);
+  }
+  66% {
+    transform: translate(0.1rem, -0.1rem);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}

@@ -1,0 +1,24 @@
+.block {
+  height: fit-content;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  background-color: var(--color-main-100);
+  overflow: hidden;
+}
+:global(.dark-mode) .block {
+  background-color: var(--color-main-500);
+}
+
+.block p {
+  font-size: 1.2rem;
+}
+
+.block span {
+  font-size: 1rem;
+}
+
+@container main (min-width: 900px) {
+  .block {
+    order: 3;
+  }
+}

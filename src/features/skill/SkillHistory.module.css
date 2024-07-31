@@ -1,0 +1,85 @@
+.history {
+  position: relative;
+}
+
+@container main (min-width: 600px) {
+  .history {
+    grid-row: span 2;
+  }
+}
+
+@container main (min-width: 900px) {
+  .history {
+    order: 1;
+    grid-row: span 1;
+  }
+}
+
+.content {
+  max-height: 20rem;
+  overflow-y: auto;
+}
+
+.content::after {
+  content: "";
+  position: sticky;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  background: linear-gradient(
+    0deg,
+    hsl(from var(--color-main-100) h s l / 100%),
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 2;
+}
+
+:global(.dark-mode) {
+  .content::after {
+    background: linear-gradient(
+      0deg,
+      hsl(from var(--color-main-500) h s l / 100%),
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}
+.day {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 0.6rem 0.3rem;
+}
+
+.day hr {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  margin-bottom: 0.2rem;
+  border: none;
+  border-bottom: 2px dotted var(--accent);
+  align-self: flex-end;
+  z-index: 0;
+}
+
+.date,
+.amount {
+  background-color: var(--color-main-100);
+  z-index: 1;
+}
+
+:global(.dark-mode) .date,
+:global(.dark-mode) .amount {
+  background-color: var(--color-main-500);
+}
+
+.date {
+  padding-right: 0.2rem;
+}
+
+.amount {
+  padding-left: 0.2rem;
+}
