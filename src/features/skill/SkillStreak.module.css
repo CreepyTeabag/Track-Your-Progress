@@ -47,7 +47,7 @@
 
 .small {
   opacity: 0;
-  margin-left: 0.6rem;
+  display: block;
   font-size: 0.8rem;
   color: var(--color-grey-500);
   vertical-align: middle;
@@ -63,5 +63,6 @@
     position: absolute;
     top: -1rem;
     left: 0;
+    margin-left: 0.6rem;
   }
 }

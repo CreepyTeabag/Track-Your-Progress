@@ -29,7 +29,7 @@ export async function getSkill({ id }) {
 export async function getSkillWithHistory({ skillId }) {
   let query = supabase
     .from("skills")
-    .select("info, name, size, type, counterWord, history(date, progress)")
+    .select("id, info, name, size, type, counterWord, history(date, progress)")
     .order("date", { foreignTable: "history" })
     .eq("id", skillId)
     .single();
