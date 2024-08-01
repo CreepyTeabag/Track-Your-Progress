@@ -1,16 +1,7 @@
-import SkillExtraInfo from "../features/skill/SkillExtraInfo";
-import SkillStats from "../features/skill/SkillStats";
-import SkillMainInfo from "../features/skill/SkillMainInfo";
-import style from "./Skill.module.css";
+import SkillDetail from "../features/skill/SkillDetail";
 
 function Skill() {
-  return (
-    <div className={style.page}>
-      <SkillMainInfo />
-      <SkillExtraInfo />
-      <SkillStats />
-    </div>
-  );
+  return <SkillDetail />;
 }
 
 export default Skill;

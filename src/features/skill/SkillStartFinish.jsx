@@ -1,16 +1,29 @@
 import style from "./SkillStartFinish.module.css";
+import { useSkillWithHistory } from "./useSkillWithHistory";
 
 function SkillStartFinish() {
-  const startDate = "12.03.2024";
-  const finishDate = "23.07.2024";
-  const isFinished = false;
-  const itemsLeft = 95;
-  const counterWord = "lesson";
+  const {
+    isLoading,
+    skillWithHistory,
+    startDate,
+    finishDate,
+    itemsLeft,
+    isFinished,
+    isStarted,
+  } = useSkillWithHistory();
+
+  if (isLoading) return;
 
   return (
     <div className={style.block}>
       <p>
-        Started: <span>{startDate}</span>
+        {isStarted ? (
+          <>
+            Started: <span>{startDate}</span>
+          </>
+        ) : (
+          ""
+        )}
       </p>
       {isFinished ? (
         <p>
@@ -18,7 +31,7 @@ function SkillStartFinish() {
         </p>
       ) : (
         <p>
-          {itemsLeft} {counterWord} left
+          {itemsLeft} {skillWithHistory.counterWord}s left
         </p>
       )}
     </div>

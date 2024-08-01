@@ -1,20 +1,21 @@
 import ProgressBar from "./ProgressBar";
 import style from "./SkillProgress.module.css";
+import { useSkillWithHistory } from "./useSkillWithHistory";
 
-function SkillProgress({ isFinished }) {
-  const counterWord = "lesson";
-  const progress = 5;
-  const size = 100;
+function SkillProgress() {
+  const { skillWithHistory, isFinished, isStarted, progress } =
+    useSkillWithHistory();
 
   return (
     <div className={style.skillProgress}>
-      {!isFinished && (
+      {!isFinished && isStarted && (
         <>
-          On {counterWord} <span className={style.largeText}>#{progress}</span>{" "}
-          of {size}
+          On {skillWithHistory.counterWord}{" "}
+          <span className={style.largeText}>#{progress}</span> of{" "}
+          {skillWithHistory.size}
         </>
       )}
-      <ProgressBar progress={progress} size={size} />
+      <ProgressBar />
     </div>
   );
 }

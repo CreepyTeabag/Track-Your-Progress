@@ -1,11 +1,12 @@
+import { format } from "date-fns";
 import AccordionSimple from "../../ui/AccordionSimple";
 import style from "./SkillHistory.module.css";
+import { useSkillWithHistory } from "./useSkillWithHistory";
 
 function SkillHistory() {
-  const date = "12.03.2024";
-  const counterWord = "lesson";
-  const progress = 10;
-  const hasHistory = true;
+  const { isLoading, skillWithHistory, isStarted } = useSkillWithHistory();
+
+  if (isLoading) return;
 
   return (
     <AccordionSimple
@@ -14,36 +15,19 @@ function SkillHistory() {
       className={style.history}
     >
       <div className={style.content}>
-        {hasHistory ? (
+        {isStarted ? (
           <>
-            <div className={style.day}>
-              <div className={style.date}>{date}</div>
-              <hr />
-              <div className={style.amount}>
-                {counterWord} #{progress}
+            {skillWithHistory.history.map((item) => (
+              <div className={style.day}>
+                <div className={style.date}>
+                  {format(item.date, "d MMM  y")}
+                </div>
+                <hr />
+                <div className={style.amount}>
+                  {skillWithHistory.counterWord} #{item.progress}
+                </div>
               </div>
-            </div>
-            <div className={style.day}>
-              <div className={style.date}>{date}</div>
-              <hr />
-              <div className={style.amount}>
-                {counterWord} #{progress}
-              </div>
-            </div>
-            <div className={style.day}>
-              <div className={style.date}>{date}</div>
-              <hr />
-              <div className={style.amount}>
-                {counterWord} #{progress}
-              </div>
-            </div>
-            <div className={style.day}>
-              <div className={style.date}>{date}</div>
-              <hr />
-              <div className={style.amount}>
-                {counterWord} #{progress}
-              </div>
-            </div>
+            ))}
           </>
         ) : (
           "Nothing here yet..."

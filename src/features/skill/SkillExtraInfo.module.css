@@ -14,7 +14,7 @@
 
 @container main (min-width: 900px) {
   .wrapper {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1.3fr 2fr 1fr;
     grid-template-rows: auto;
   }
 }

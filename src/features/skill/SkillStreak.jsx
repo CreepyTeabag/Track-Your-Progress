@@ -1,10 +1,11 @@
 import { PiFire, PiFireFill } from "react-icons/pi";
 import style from "./SkillStreak.module.css";
+import { useSkillWithHistory } from "./useSkillWithHistory";
 
 function SkillStreak() {
-  const practicedToday = false;
-  const currentStreak = 5;
-  const longestStreak = 10;
+  const { practicedToday } = useSkillWithHistory();
+  const currentStreak = "todo";
+  const longestStreak = "todo";
 
   return (
     <div className={style.wrapper}>
