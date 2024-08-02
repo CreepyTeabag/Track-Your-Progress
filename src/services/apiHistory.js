@@ -27,8 +27,6 @@ export async function addHistory({ skillId, date, progress }) {
     throw new Error("History could not added");
   }
 
-  console.log("result:", data);
-
   return { data };
 }
 
@@ -41,8 +39,6 @@ export async function addHistories(list) {
     console.error(error);
     throw new Error("History could not added");
   }
-
-  console.log("result:", data);
 
   return { data };
 }
