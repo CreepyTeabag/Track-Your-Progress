@@ -13,12 +13,12 @@ function ProgressBar() {
     <>
       {percentage === 100 && (
         <>
-          <p className={style.text}>
+          <div className={style.text}>
             Finished{" "}
             <div className={style.icon}>
               <PiMedal />
             </div>
-          </p>
+          </div>
         </>
       )}
 

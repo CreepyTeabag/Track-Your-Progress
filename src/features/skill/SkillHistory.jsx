@@ -18,7 +18,7 @@ function SkillHistory() {
         {isStarted ? (
           <>
             {skillWithHistory.history.map((item) => (
-              <div className={style.day}>
+              <div className={style.day} key={`${item.date}_${item.progress}`}>
                 <div className={style.date}>
                   {format(item.date, "d MMM  y")}
                 </div>

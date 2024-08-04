@@ -34,7 +34,7 @@ export function useSkillWithHistory() {
 
   const practicedToday = lastLog ? isToday(lastLog.date) : false;
 
-  console.log("skillWithHistory", skillWithHistory);
+  // console.log("skillWithHistory", skillWithHistory);
 
   return {
     isLoading,

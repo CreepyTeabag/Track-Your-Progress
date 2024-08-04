@@ -9,7 +9,7 @@ export function useAddHistory() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["skillWithHistory"] });
     },
-    onError: (err) => console.log(err),
+    onError: (err) => console.error(err),
   });
 
   return { isAdding, addHistory };
