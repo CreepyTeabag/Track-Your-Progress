@@ -1,0 +1,21 @@
+.mainInfo {
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  grid-template-columns: 1fr 4rem;
+  grid-template-areas:
+    "name update"
+    "progress progress"
+    "tags tags"
+    "streak streak";
+}
+
+@container main (min-width: 900px) {
+  .mainInfo {
+    row-gap: 1.7rem;
+    grid-template-columns: 1fr 12rem 8rem 4rem;
+    grid-template-areas:
+      "name tags tags update "
+      "progress progress streak streak";
+  }
+}

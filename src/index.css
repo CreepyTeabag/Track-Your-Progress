@@ -56,6 +56,8 @@ body {
 
   --accent: var(--color-main-700);
   --red: #51000e;
+  --blue: #0e48c7;
+  --yellow: #d8b106;
 
   --color-grey-50: #111213;
   --color-grey-100: #212326;
@@ -99,6 +101,8 @@ body {
 
   --accent: #ff5a1f;
   --red: #d42317;
+  --blue: #1255e7;
+  --yellow: #ecd60b;
 
   --color-grey-50: #ececef;
   --color-grey-100: #d8d9de;
@@ -133,8 +137,8 @@ body {
 
 /*------------------BIG BLOCKS------------------*/
 .block,
-.form,
-.history {
+.form/* ,
+.history */ {
   background-color: var(--color-main-200);
   border-radius: 0.5rem;
   overflow: hidden;
@@ -145,8 +149,8 @@ body {
   height: fit-content;
 }
 
-.form,
-.history {
+.form/* ,
+.history */ {
   display: grid;
   grid-template-columns: 14rem 8rem;
   grid-column-start: 2;
@@ -162,10 +166,10 @@ body {
   grid-column: span 2;
 }
 
-.history {
+/* .history {
   grid-template-columns: 1fr;
   padding-bottom: 2rem;
-}
+} */
 
 .new-skill {
   grid-template-columns: 8rem 14rem;
@@ -187,7 +191,7 @@ body {
 
 /*---------------HISTORY ELEMENTS---------------*/
 
-.day {
+/* .day {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -217,7 +221,7 @@ body {
 
 .amount {
   padding-left: 0.2rem;
-}
+} */
 
 /*-----------------FORM ELEMENTS----------------*/
 .input {
@@ -387,8 +391,8 @@ body {
     z-index: 1;
   }
 
-  .form,
-  .history {
+  .form/* ,
+  .history  */ {
     padding: 2rem;
     row-gap: 1.5rem;
   }
@@ -602,7 +606,7 @@ body {
     margin-top: 1rem;
   }
 
-  .history {
+  /*   .history {
     overflow-y: scroll;
   }
 
@@ -621,7 +625,7 @@ body {
     );
     z-index: 2;
   }
-
+ */
   .new-skill .add-skill,
   .new-skill .edit-skill {
     margin-top: 0.5rem;

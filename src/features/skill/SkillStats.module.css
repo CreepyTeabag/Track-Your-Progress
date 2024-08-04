@@ -1,0 +1,20 @@
+.stats {
+  margin-top: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  column-gap: 1.5rem;
+  row-gap: 0.5rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.heading {
+  font-size: 1.2rem;
+  line-height: 1.1;
+  font-weight: 500;
+  text-wrap: pretty;
+}

@@ -1,0 +1,7 @@
+.heading {
+  padding-right: 1rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-decoration: hsl(from var(--accent) h s l / 0.3) underline;
+  text-decoration-thickness: 3px;
+}

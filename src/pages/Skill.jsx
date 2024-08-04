@@ -1,5 +1,7 @@
+import SkillDetail from "../features/skill/SkillDetail";
+
 function Skill() {
-  return <div>Skill page</div>;
+  return <SkillDetail />;
 }
 
 export default Skill;

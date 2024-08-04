@@ -4,14 +4,18 @@
   "private": true,
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0",
+    "@tanstack/react-query": "^5.51.16",
+    "@tanstack/react-query-devtools": "^5.51.16",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "date-fns": "^3.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.25.1",
+    "recharts": "^2.12.7",
     "vite": "^5.3.5",
     "web-vitals": "^2.1.4"
   },

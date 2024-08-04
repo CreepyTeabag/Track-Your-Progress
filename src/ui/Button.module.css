@@ -1,0 +1,18 @@
+.button {
+  all: unset;
+  width: fit-content;
+  padding: 0.4rem 0.6rem;
+  background-color: var(--color-main-300);
+  border-radius: 0.3rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-main-400);
+}
+
+.button:focus {
+  outline: 3px solid var(--color-main-500);
+  outline-offset: 2px;
+}

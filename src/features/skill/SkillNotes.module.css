@@ -1,0 +1,5 @@
+@container main (min-width: 900px) {
+  .notes {
+    order: 2;
+  }
+}

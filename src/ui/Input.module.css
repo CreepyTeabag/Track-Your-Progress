@@ -1,0 +1,16 @@
+.input {
+  all: unset;
+  padding: 0.4rem 0.6rem;
+  background-color: var(--color-main-50);
+  border-radius: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.input:hover {
+  background-color: var(--color-main-100);
+}
+
+.input:focus {
+  outline: 3px solid var(--color-main-500);
+  outline-offset: 2px;
+}
