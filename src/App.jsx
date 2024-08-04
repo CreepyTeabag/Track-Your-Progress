@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 import { useState } from "react";
 
 import ProtectedRoute from "./ui/ProtectedRoute";
@@ -30,7 +30,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
 
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route
               element={
@@ -53,7 +53,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </QueryClientProvider>
     </DarkModeProvider>
   );
