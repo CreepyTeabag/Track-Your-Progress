@@ -1,0 +1,10 @@
+1: reactHistory
+2: nodeJsHistory
+3: touchTypingHistory
+4: touchTypingRuHistory
+5: parentingHistory
+6: youDontKnowJsHistory
+7: perfectProgrammerHistory
+8: reactNextJsHistory
+9: happyStudyHistory
+10: sqlAcademyHistory

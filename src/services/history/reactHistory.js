@@ -1,4 +1,4 @@
-export const list = [
+export const reactHistory = [
   {
     skillId: 1,
     date: "2023-11-21",

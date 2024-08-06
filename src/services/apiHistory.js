@@ -1,4 +1,13 @@
-import { list } from "./reactHistory";
+import { reactHistory } from "./history/reactHistory";
+import { nodeJsHistory } from "./history/nodeJsHistory";
+import { touchTypingHistory } from "./history/touchTypingHistory";
+import { touchTypingRuHistory } from "./history/touchTypingRuHistory";
+import { parentingHistory } from "./history/parentingHistory";
+import { youDontKnowJsHistory } from "./history/youDontKnowJsHistory";
+import { perfectProgrammerHistory } from "./history/perfectProgrammerHistory";
+import { reactNextJsHistory } from "./history/reactNextJsHistory";
+import { happyStudyHistory } from "./history/happyStudyHistory";
+import { sqlAcademyHistory } from "./history/sqlAcademyHistory";
 import supabase from "./supabase";
 
 export async function getHistory({ skillId }) {
@@ -43,4 +52,13 @@ export async function addHistories(list) {
   return { data };
 }
 
-// addHistories(list);
+// addHistories(reactHistory);
+// addHistories(nodeJsHistory);
+// addHistories(touchTypingHistory);
+// addHistories(touchTypingRuHistory);
+// addHistories(parentingHistory);
+// addHistories(youDontKnowJsHistory);
+// addHistories(perfectProgrammerHistory);
+// addHistories(reactNextJsHistory);
+// addHistories(happyStudyHistory);
+// addHistories(sqlAcademyHistory);
