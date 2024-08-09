@@ -1,7 +1,7 @@
 .main {
   container: main / inline-size;
   background-color: var(--color-main-50);
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 4rem;
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: calc(100vh - 3.5rem);
