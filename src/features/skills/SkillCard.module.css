@@ -1,0 +1,23 @@
+.card {
+  display: grid;
+  padding: 0.8rem;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  border-radius: 0.8rem;
+  background-color: var(--color-main-100);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.name {
+  margin: 0.3rem 0;
+  font-size: 1.4rem;
+  line-height: 1.1;
+  font-weight: 500;
+  text-wrap: pretty;
+  cursor: pointer;
+}

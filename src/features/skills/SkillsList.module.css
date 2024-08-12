@@ -1,0 +1,14 @@
+.page {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-areas:
+    "header header header"
+    "search search newItem"
+    "filter filter sort"
+    "list list list";
+  row-gap: 1rem;
+}
+
+.header {
+  grid-area: header;
+}

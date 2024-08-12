@@ -1,11 +1,8 @@
 import { PiMedal } from "react-icons/pi";
 import style from "./ProgressBar.module.css";
-import { useSkillWithHistory } from "./useSkillWithHistory";
 
-function ProgressBar() {
-  const { skillWithHistory, progress } = useSkillWithHistory();
-
-  let percentage = (progress / skillWithHistory?.size) * 100;
+function ProgressBar({ progress, size }) {
+  let percentage = (progress / size) * 100;
   if (percentage > 0 && percentage < 1) percentage = 1;
   else percentage = Math.floor(percentage);
 

@@ -43,3 +43,19 @@ export async function getSkillWithHistory({ skillId }) {
 
   return { data };
 }
+
+export async function getSkillsList() {
+  let query = supabase
+    .from("skills")
+    .select("id, created_at, name, size, type, history(date, progress)")
+    .order("date", { foreignTable: "history" });
+
+  const { data, error } = await query;
+
+  if (error) {
+    console.error(error);
+    throw new Error("Skills list could not be loaded");
+  }
+
+  return { data };
+}

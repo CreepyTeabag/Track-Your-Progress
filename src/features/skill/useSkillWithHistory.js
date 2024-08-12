@@ -22,12 +22,12 @@ export function useSkillWithHistory() {
   const lastLog = history?.at(-1);
   const firstLog = history?.at(0);
 
-  const startDate = firstLog?.date ? format(firstLog.date, "d MMM  y") : "";
+  const startDate = firstLog?.date ? format(firstLog.date, "d MMM y") : "";
 
   const itemsLeft = lastLog ? size - lastLog?.progress : size;
 
   const isFinished = itemsLeft === 0;
-  const finishDate = isFinished ? format(lastLog?.date, "d MMM  y") : "";
+  const finishDate = isFinished ? format(lastLog?.date, "d MMM y") : "";
 
   const progress = lastLog?.progress ?? 0;
   const isStarted = progress > 0;
