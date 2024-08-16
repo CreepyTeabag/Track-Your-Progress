@@ -1,7 +1,7 @@
 import style from "./SkillsList.module.css";
 import PageHeader from "../../ui/PageHeader";
 import Search from "./Search";
-import NewItem from "./NewItem";
+import NewItemButton from "./NewItemButton";
 import FilterSkills from "./FilterSkills";
 import SortSkills from "./SortSkills";
 import CardList from "./CardList";
@@ -11,7 +11,7 @@ function SkillsList() {
     <div className={style.page}>
       <PageHeader className={style.header}>Your Skills</PageHeader>
       <Search />
-      <NewItem />
+      <NewItemButton />
       <FilterSkills />
       <SortSkills />
       <CardList />
