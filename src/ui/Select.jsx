@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import style from "./Select.module.css";
 
-function Select({ options, filterField, ...props }) {
+function Select({ options, filterField, className, ...props }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filterField) || options.at(0).value;
 
@@ -12,7 +12,7 @@ function Select({ options, filterField, ...props }) {
 
   return (
     <select
-      className={style.select}
+      className={`${style.select} ${className ? className : ""}`}
       value={currentFilter}
       onChange={(e) => onChange(e.target.value)}
       {...props}

@@ -35,7 +35,7 @@ export function useSkillsList() {
 
     return {
       ...skill,
-      lastActivity: lastLog?.date,
+      lastActivity: lastLog?.date ? lastLog?.date : skill.created_at,
       isStarted,
       isFinished,
       startDate,

@@ -6,6 +6,21 @@ export const statsFilterOptions = [
   { value: "3650", label: "All" },
 ];
 
+export const sortSkillsOptions = [
+  { value: "last-activity", label: "Last activity" },
+  { value: "activity", label: "Activity" },
+  { value: "name-a-z", label: "Name A - Z" },
+  { value: "name-z-a", label: "Name Z - A" },
+  { value: "progress-desc", label: "Progress ⬆️" },
+  { value: "progress-asc", label: "Progress ⬇️" },
+  { value: "created", label: "Created date" },
+  { value: "type", label: "Type" },
+  { value: "start-date-desc", label: "Start date ⬆️" },
+  { value: "start-date-asc", label: "Start date ⬇️" },
+  { value: "finish-date-desc", label: "Finish date ⬆️" },
+  { value: "finish-date-asc", label: "Finish date ⬇️" },
+];
+
 export function fillEmptyProgressDays(array) {
   let lastNonZeroProgress = 0;
   return array.map((item) => {
