@@ -1,3 +1,5 @@
+import { parse, parseISO } from "date-fns";
+
 export const statsFilterOptions = [
   { value: "7", label: "Last 7 days" },
   { value: "14", label: "Last 14 days" },
@@ -8,7 +10,6 @@ export const statsFilterOptions = [
 
 export const sortSkillsOptions = [
   { value: "last-activity", label: "Last activity" },
-  { value: "activity", label: "Activity" },
   { value: "name-a-z", label: "Name A - Z" },
   { value: "name-z-a", label: "Name Z - A" },
   { value: "progress-desc", label: "Progress ⬆️" },
@@ -20,6 +21,29 @@ export const sortSkillsOptions = [
   { value: "finish-date-desc", label: "Finish date ⬆️" },
   { value: "finish-date-asc", label: "Finish date ⬇️" },
 ];
+
+export const skillSortRules = {
+  "last-activity": (a, b) =>
+    parseISO(b.lastActivity) - parseISO(a.lastActivity),
+  "name-a-z": (a, b) => a.name.localeCompare(b.name),
+  "name-z-a": (a, b) => b.name.localeCompare(a.name),
+  "progress-desc": (a, b) => b.progress / b.size - a.progress / a.size,
+  "progress-asc": (a, b) => a.progress / a.size - b.progress / b.size,
+  created: (a, b) => parseISO(b.created_at) - parseISO(a.created_at),
+  type: (a, b) => a.type.localeCompare(b.type),
+  "start-date-desc": (a, b) =>
+    parse(b.startDate, "d MMM y", b.history?.at(0)?.date) -
+    parse(a.startDate, "d MMM y", a.history?.at(0)?.date),
+  "start-date-asc": (a, b) =>
+    parse(a.startDate, "d MMM y", a.history?.at(0)?.date) -
+    parse(b.startDate, "d MMM y", b.history?.at(0)?.date),
+  "finish-date-desc": (a, b) =>
+    parse(b.finishDate, "d MMM y", new Date()) -
+    parse(a.finishDate, "d MMM y", new Date()),
+  "finish-date-asc": (a, b) =>
+    parse(a.finishDate, "d MMM y", new Date()) -
+    parse(b.finishDate, "d MMM y", new Date()),
+};
 
 export function fillEmptyProgressDays(array) {
   let lastNonZeroProgress = 0;
