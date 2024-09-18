@@ -12,12 +12,15 @@
 }
 
 .error {
-  margin-top: -0.5rem;
+  position: absolute;
+  bottom: 2px;
+  right: 5px;
   font-size: 0.8rem;
   color: var(--red);
 }
 
 .label {
+  position: relative;
   display: grid;
   width: 100%;
   grid-template-columns: auto 1fr;
