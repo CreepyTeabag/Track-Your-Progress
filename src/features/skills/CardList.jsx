@@ -14,7 +14,6 @@ function CardList() {
   const sortBy = searchParams.get("sortBy") || "last-activity";
   const sortedSkillsList = skillsList.sort(skillSortRules[sortBy]);
 
-  console.log("skillsList", skillsList);
   return (
     <div className={style.list}>
       {sortedSkillsList.map((skill) => (

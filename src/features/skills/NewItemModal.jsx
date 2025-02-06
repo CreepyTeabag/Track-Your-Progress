@@ -1,5 +1,8 @@
 import Button from "../../ui/Button";
 import ModalHeading from "../../ui/ModalHeading";
+import Loader from "../../ui/Loader";
+
+import { useAddSkill } from "../skill/useAddSkill";
 import { useForm } from "react-hook-form";
 
 import style from "./NewItemModal.module.css";
@@ -8,9 +11,18 @@ import inputStyle from "../../ui/Input.module.css";
 function NewItemModal({ onCloseModal }) {
   const { register, handleSubmit, reset, formState } = useForm();
   const { errors } = formState;
+  const { isAddingSkill, addSkill } = useAddSkill();
 
   function onSubmit(data) {
-    console.log("onSubmit", data);
+    addSkill(
+      { ...data, size: Number(data.size) },
+      {
+        onSettled: () => {
+          reset();
+          onCloseModal();
+        },
+      }
+    );
   }
 
   function onError(errors) {
@@ -29,6 +41,7 @@ function NewItemModal({ onCloseModal }) {
             placeholder="Name"
             id="name"
             className={inputStyle.input}
+            disabled={isAddingSkill}
             {...register("name", { required: "This field is required" })}
           />
           {errors.name?.message && (
@@ -43,6 +56,7 @@ function NewItemModal({ onCloseModal }) {
             placeholder="Size"
             id="size"
             className={inputStyle.input}
+            disabled={isAddingSkill}
             {...register("size", {
               required: "This field is required",
               min: {
@@ -62,6 +76,7 @@ function NewItemModal({ onCloseModal }) {
             placeholder="Type (book, course, etc.)"
             id="type"
             className={inputStyle.input}
+            disabled={isAddingSkill}
             {...register("type", { required: "This field is required" })}
           />
           {errors.type?.message && (
@@ -75,6 +90,7 @@ function NewItemModal({ onCloseModal }) {
             placeholder="Counter word (page, lesson, etc.)"
             id="counterWord"
             className={inputStyle.input}
+            disabled={isAddingSkill}
             {...register("counterWord", { required: "This field is required" })}
           />
           {errors.counterWord?.message && (
@@ -89,13 +105,18 @@ function NewItemModal({ onCloseModal }) {
             placeholder="Any additional info"
             id="info"
             className={inputStyle.input}
+            disabled={isAddingSkill}
+            {...register("info")}
           />
           {errors.info?.message && (
             <p className={style.error}>{errors.info.message}</p>
           )}
         </label>
 
-        <Button disabled={false}>Create</Button>
+        <div className={style.buttonWrapper}>
+          <Button disabled={isAddingSkill}>Create</Button>
+          {isAddingSkill && <Loader size="tiny" />}
+        </div>
       </form>
     </div>
   );

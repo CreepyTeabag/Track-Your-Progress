@@ -59,3 +59,19 @@ export async function getSkillsList() {
 
   return { data };
 }
+
+export async function addSkill({ name, size, type, counterWord, info = "" }) {
+  let query = supabase
+    .from("skills")
+    .insert([{ name, size, type, counterWord, info }])
+    .select();
+
+  const { data, error } = await query;
+
+  if (error) {
+    console.error(error);
+    throw new Error("Skill could not be added");
+  }
+
+  return { data };
+}
