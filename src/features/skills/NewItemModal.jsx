@@ -40,7 +40,7 @@ function NewItemModal({ onCloseModal }) {
             type="text"
             placeholder="Name"
             id="name"
-            className={inputStyle.input}
+            className={`${inputStyle.input} ${style.input}`}
             disabled={isAddingSkill}
             {...register("name", { required: "This field is required" })}
           />
@@ -55,7 +55,7 @@ function NewItemModal({ onCloseModal }) {
             step="0.01"
             placeholder="Size"
             id="size"
-            className={inputStyle.input}
+            className={`${inputStyle.input} ${style.input}`}
             disabled={isAddingSkill}
             {...register("size", {
               required: "This field is required",
@@ -75,7 +75,7 @@ function NewItemModal({ onCloseModal }) {
             type="text"
             placeholder="Type (book, course, etc.)"
             id="type"
-            className={inputStyle.input}
+            className={`${inputStyle.input} ${style.input}`}
             disabled={isAddingSkill}
             {...register("type", { required: "This field is required" })}
           />
@@ -89,7 +89,7 @@ function NewItemModal({ onCloseModal }) {
             type="text"
             placeholder="Counter word (page, lesson, etc.)"
             id="counterWord"
-            className={inputStyle.input}
+            className={`${inputStyle.input} ${style.input}`}
             disabled={isAddingSkill}
             {...register("counterWord", { required: "This field is required" })}
           />
@@ -104,7 +104,7 @@ function NewItemModal({ onCloseModal }) {
             type="text"
             placeholder="Any additional info"
             id="info"
-            className={inputStyle.input}
+            className={`${inputStyle.input} ${style.input}`}
             disabled={isAddingSkill}
             {...register("info")}
           />

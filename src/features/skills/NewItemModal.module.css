@@ -33,3 +33,19 @@
   width: min-content;
   column-gap: 0.5rem;
 }
+
+@media (width < 400px) {
+  .label {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .error {
+    bottom: -2px;
+    font-size: 0.6rem;
+  }
+
+  .input {
+    font-size: 0.8rem !important;
+  }
+}
