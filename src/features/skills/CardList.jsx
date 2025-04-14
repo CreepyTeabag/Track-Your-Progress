@@ -14,11 +14,25 @@ function CardList() {
   const sortBy = searchParams.get("sortBy") || "last-activity";
   const sortedSkillsList = skillsList.sort(skillSortRules[sortBy]);
 
+  const searchQuery = searchParams.get("search") || "";
+
+  const finalSkillsList = searchQuery
+    ? sortedSkillsList.filter((skill) =>
+        skill.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : sortedSkillsList;
+
   return (
     <div className={style.list}>
-      {sortedSkillsList.map((skill) => (
-        <SkillCard key={skill.id} skill={skill} />
-      ))}
+      {finalSkillsList.length > 0 ? (
+        finalSkillsList.map((skill) => (
+          <SkillCard key={skill.id} skill={skill} />
+        ))
+      ) : (
+        <div className={style.emptyList}>
+          <span className={style.emptyText}>Nothing found</span>
+        </div>
+      )}
     </div>
   );
 }

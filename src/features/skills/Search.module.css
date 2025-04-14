@@ -1,3 +1,22 @@
-.search {
-  grid-area: search;
+.searchWrapper {
+  grid-area: search !important;
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+
+  svg {
+    position: absolute;
+    right: -0.6rem;
+    top: calc(50% - 0.7rem);
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: var(--color-grey-800) !important;
+    stroke: var(--color-grey-800) !important;
+    opacity: 0.5;
+  }
+}
+
+.searchInput {
+  width: 100% !important;
+  outline: 0.1rem solid var(--color-main-200) !important;
 }

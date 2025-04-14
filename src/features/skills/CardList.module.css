@@ -4,3 +4,15 @@
   grid-template-columns: 1fr;
   row-gap: 0.8rem;
 }
+
+.emptyList {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.emptyText {
+  font-size: 1.5rem;
+}
