@@ -1,0 +1,12 @@
+.new {
+  grid-area: newItem;
+  justify-self: end;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem 0.8rem 0.4rem 0.6rem;
+  svg {
+    align-self: center;
+    margin-right: 0.3rem;
+  }
+}

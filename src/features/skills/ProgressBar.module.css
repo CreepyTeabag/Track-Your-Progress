@@ -1,0 +1,19 @@
+.text {
+  font-size: 1.2rem;
+}
+
+.text:has(.icon) {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.icon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}

@@ -8,6 +8,7 @@ function Input({
   className = "",
   value,
   onChange,
+  name,
 }) {
   return (
     <input
@@ -18,6 +19,7 @@ function Input({
       className={`${style.input} ${className}`}
       value={value}
       onChange={onChange}
+      name={name}
     />
   );
 }

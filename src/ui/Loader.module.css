@@ -5,6 +5,10 @@
   justify-content: center;
   align-items: center;
 }
+.wrapper.tiny {
+  transform: scale(0.5);
+}
+
 .loader {
   animation: rotate 1s infinite;
   height: 50px;

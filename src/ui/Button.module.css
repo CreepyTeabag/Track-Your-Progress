@@ -16,3 +16,13 @@
   outline: 3px solid var(--color-main-500);
   outline-offset: 2px;
 }
+
+.button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+  filter: grayscale(0.5);
+}
+
+.button[disabled]:hover {
+  background-color: var(--color-main-300);
+}

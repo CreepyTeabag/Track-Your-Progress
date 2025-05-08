@@ -1,0 +1,51 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.8rem;
+  padding-bottom: 0.5rem;
+}
+
+.form {
+  width: 100%;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.error {
+  position: absolute;
+  bottom: 2px;
+  right: 5px;
+  font-size: 0.8rem;
+  color: var(--red);
+}
+
+.label {
+  position: relative;
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.buttonWrapper {
+  display: flex;
+  width: min-content;
+  column-gap: 0.5rem;
+}
+
+@media (width < 400px) {
+  .label {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .error {
+    bottom: -2px;
+    font-size: 0.6rem;
+  }
+
+  .input {
+    font-size: 0.8rem !important;
+  }
+}

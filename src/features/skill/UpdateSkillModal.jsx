@@ -73,6 +73,7 @@ function UpdateSkillModal({ onCloseModal }) {
           className={style.input}
           value={newProgress}
           disabled={isAdding}
+          name="progress"
           onChange={(e) => {
             if (
               !isNaN(e.target.value) ||
